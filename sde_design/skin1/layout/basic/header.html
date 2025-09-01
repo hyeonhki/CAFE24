@@ -1,4 +1,5 @@
-<div class="main_top_banner ez-align-left" data-ez-align="left" data-ez-display="visible" data-ez-module="top-banner" data-ez-role="style.color" data-ez="contents-0kffdxb-1">
+<!-- 최상단 배너 숨김 처리 (TOUNE 스타일) -->
+<div class="main_top_banner ez-align-left" data-ez-align="left" data-ez-display="visible" data-ez-module="top-banner" data-ez-role="style.color" data-ez="contents-0kffdxb-1" style="display: none;">
 <div class="top_banner_box_inner">
 <div class="top_banner_text"><!-- 최상단 배너 수정하는곳 -->
 <a data-ez-role="a" data-href="#" href="#" target="_self">첫 쇼핑을 지원하는 3,000원 할인 회원가입 쿠폰</a>
@@ -19,19 +20,20 @@
 </ez-var>
 </ez-prop>
 <div class="inner">
+
+<!-- TOUNE 스타일 네비게이션 상단 1/5 - 메인 항목 -->
+<div class="toune-nav-main">
+<ul>
+<li><a href="/">Shop</a></li>
+<li><a href="/member/login.html" module="Layout_statelogoff">Login</a><a href="/myshop/index.html" module="Layout_stateLogon">My</a></li>
+<li><a href="javascript:;" class="eSearch">Search</a></li>
+<li><a href="/order/basket.html">Bag <span class="{$use_basket_cnt|display}"><strong>{$basket_cnt}</strong></span></a></li>
+</ul>
+</div>
+
+<!-- 기존 사용자 정보 영역 (상단 유지) -->
 <div class="toparea display_pc_only">
 <div class="toparea_shoppinginfo">
-<div module="Layout_multishopList">
-<button class="toggle" type="button">{$current_language} <i aria-hidden="true" class="icon icoArrowRight"></i></button>
-<ul module="Layout_multishopListitem">
-<li class="{$selected_class}">
-<a href="//{$shop_domain}/">{$locale_language}</a>
-</li>
-<li class="{$selected_class}">
-<a href="//{$shop_domain}/">{$locale_language}</a>
-</li>
-</ul>
-</div><!-- //Layout_multishopList -->
 <div data-ez-group="shopping-info" data-ez-role="list">
 <ul module="Layout_shoppingInfo">
 <li class="{$use_mileage|display}"><a href="/myshop/mileage/historyList.html">{$mileage_name} <strong>{$mileage}</strong></a></li>
@@ -39,7 +41,6 @@
 <li class="{$use_coupon_cnt|display}"><a href="/myshop/coupon/coupon.html">쿠폰 <strong>{$coupon_cnt}</strong></a></li>
 <li class="{$use_interest_prd|display}"><a href="/myshop/wish_list.html">관심상품 <strong>{$interest_prd_cnt}</strong></a></li>
 <li class="{$use_like_product_cnt|display}">{$like_prd_tag}</li>
-<li class="{$use_basket_cnt|display}"><a href="/order/basket.html">장바구니 <strong>{$basket_cnt}<span class="{$use_basket_price|display}">({$basket_price})</span></strong></a></li>
 </ul>
 </div>
 </div><!-- //toparea_shoppinginfo -->
@@ -60,9 +61,32 @@
 </div>
 </div><!-- //toparea_state -->
 </div><!-- //toparea -->
-<div class="top_nav_box" id="top_nav_box">
-<div class="top_logo" module="Layout_LogoTop"><a href="/"><img alt="쇼핑몰 이름" data-ez-initialized src style="display: none;">{$mall_name}</a></div><!-- //top_logo -->
-<div class="top_mypage">
+<!-- TOUNE 스타일 네비게이션 상단 2/5 - 상점 항목 -->
+<div class="toune-nav-shop">
+<div data-ez-module="menu-main/1" data-ez-mode="manual">
+<div class="xans-element- xans-layout xans-layout-category top_category">
+<ul>
+<li><a href="/product/list.html?cate_no=999">New arrivals</a></li>
+<li><a href="/product/list.html?cate_no=998">Best 50</a></li>
+<li><a href="/category/%EC%95%84%EC%9A%B0%ED%84%B0/44/">Outers</a></li>
+<li><a href="/category/%EC%83%81%EC%9D%98/42/">Tops</a></li>
+<li><a href="/category/%ED%95%98%EC%9D%98/43/">Bottoms</a></li>
+<li><a href="/category/%EC%95%A1%EC%84%B8%EC%84%9C%EB%A6%AC/47/">Accessories</a></li>
+</ul>
+</div>
+</div><!-- //menu-main/1 -->
+</div>
+
+<!-- TOUNE 스타일 로고 (하단) -->
+<div class="toune-nav-logo">
+<div class="top_logo" module="Layout_LogoTop">
+<a href="/" class="toune-logo">toune</a>
+<div style="display: none;">{$mall_name}</div>
+</div><!-- //top_logo -->
+</div>
+
+<!-- 모바일 전용 영역 (숨김 처리) -->
+<div class="top_mypage" style="display: none;">
 <div class="tablet_detail_only" module="Layout_MobileAction">
 <a href="#none" onclick="{$go_back}"><img src="/SkinImg/img/back.svg"></a>
 </div>
@@ -71,12 +95,6 @@
 <a class="eSearch" href="javascript:;"><!--@import(/svg/icon-search.html)--></a>
 <a class="eNavFold" href="javascript:;"><i aria-hidden="true" class="icon icoNav"></i></a>
 </div><!-- //top_mypage -->
-<div data-ez-module="menu-main/1" data-ez-mode="manual">
-        <div class="xans-element- xans-layout xans-layout-category top_category">
-<ul><li><a href="/category/%EC%83%81%EC%9D%98/42/">상의</a><ul class="sub_cate01"><li><a href="/category/%EC%A4%91%EB%B6%84%EB%A5%981/50/">중분류1</a></li><li><a href="/category/%EC%A4%91%EB%B6%84%EB%A5%982/51/">중분류2</a><ul class="sub_cate02"><li><a href="/category/%EC%86%8C%EB%B6%84%EB%A5%981/52/">소분류1</a></li><li><a href="/category/%EC%86%8C%EB%B6%84%EB%A5%982/53/">소분류2</a><ul class="sub_cate03"><li><a href="/category/%EC%83%81%EC%84%B8%EB%B6%84%EB%A5%981/54/">상세분류1</a></li><li><a href="/category/%EC%83%81%EC%84%B8%EB%B6%84%EB%A5%982/55/">상세분류2</a></li></ul></li></ul></li></ul></li><li><a href="/category/%ED%95%98%EC%9D%98/43/">하의</a></li><li><a href="/category/%EC%95%84%EC%9A%B0%ED%84%B0/44/">아우터</a></li><li><a href="/category/%EC%8B%A0%EB%B0%9C/45/">신발</a></li><li><a href="/category/%EA%B0%80%EB%B0%A9/46/">가방</a></li><li><a href="/category/%EC%95%A1%EC%84%B8%EC%84%9C%EB%A6%AC/47/">액세서리</a></li><li><a href="/category/%EC%96%B8%EB%8D%94%EC%9B%A8%EC%96%B4%EC%9E%A0%EC%98%B7/48/">언더웨어/잠옷</a></li><li><a href="/category/%EA%B8%B0%ED%83%80/49/">기타</a></li></ul>
-</div>
-      </div><!-- //menu-main/1 -->
-</div><!-- //top_nav_box -->
 <div module="Layout_SearchHeader">
 <!--
 				$product_page=/product/detail.html
