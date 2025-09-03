@@ -2,11 +2,647 @@
 
 ---
 
+## 🔄 6차 수정: 메인 페이지 최적화 및 콘텐츠 정리 (2025-09-03)
+
+### 📋 6차 작업 개요
+- **수정일**: 2025년 9월 3일
+- **작업자**: Claude Code
+- **작업내용**: 메인 페이지 콘텐츠 최적화 및 사용자 요청사항 반영
+- **변경 범위**: 콘텐츠 영역 스크롤바, 설명칸, hero section, 헤더 스타일링
+
+### 🎯 6차 변경 목표
+- **스크롤바 제거**: 콘텐츠 영역 좌우 스크롤바 완전 제거
+- **설명칸 제거**: Top Seller, Trending now, New arrivals의 부제목 제거
+- **Hero 섹션**: 최상단 텍스트 섹션 추가 및 여백 조정
+- **헤더 정리**: 구분선 및 그림자 효과 제거
+
+### 📂 6차 주요 변경 사항
+
+#### 1. sde_design/skin2/layout/basic/css/sidebar-header.css 수정
+**콘텐츠 영역 스크롤바 제거**:
+```css
+/* 기존 */
+#container {
+    max-width: calc(100vw - 450px);
+}
+
+#contents {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* 변경 후 */
+#container {
+    width: calc(100vw - 450px);
+    overflow-x: hidden;
+}
+
+#contents {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+```
+
+**헤더 구분선 및 그림자 제거**:
+```css
+/* 제거된 스타일들 */
+- border-right: 1px solid #e0e0e0; /* 헤더 우측 구분선 */
+- box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1); /* 헤더 그림자 */
+- border-bottom: 1px solid #f0f0f0; /* top-area 구분선 */
+- border-top: 1px solid #f0f0f0; /* logo-area 구분선 */
+```
+
+#### 2. sde_design/skin2/index.html 대폭 수정
+**Hero 텍스트 섹션 추가**:
+```html
+<!-- 새로 추가된 Hero 텍스트 섹션 -->
+<section class="hero-text-section">
+	<div class="hero-text-content">
+		<p>We travel because we need to, because distance and difference are the secret tonic to creativity.<br>
+		When we get home, home is still the same, but something in our minds has changed, and that changes everything.<br>
+		And that's why we keep exploring.</p>
+	</div>
+</section>
+```
+
+**설명칸 제거**:
+```html
+<!-- Top Seller 설명 제거 -->
+<!-- 기존: "지금 가장 인기있는" → 삭제 -->
+<div class="main_title_txt01" data-ez-role="title">Top seller</div>
+
+<!-- Trending now 설명 제거 -->
+<!-- 기존: "에디터가 선정한" → 삭제 -->
+<div class="main_title_txt01" data-ez-role="title">Trending now</div>
+
+<!-- New Arrivals 설명 제거 -->
+<!-- 기존: "놓치기에 아쉬운" → 삭제 -->
+<div class="main_title_txt01" data-ez-role="title">New Arrivals</div>
+```
+
+#### 3. sde_design/skin2/layout/basic/css/main.css (새로 생성)
+**Hero 텍스트 섹션 스타일링**:
+```css
+/* Hero 텍스트 섹션 */
+.hero-text-section {
+    background: #f8f9fa;
+    padding: 60px 0;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.hero-text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-text-content p {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+/* 메인 타이틀 스타일 조정 */
+.main_title_txt01 {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 40px;
+}
+```
+
+#### 4. sde_design/skin2/layout/basic/js/main.js (새로 생성)
+**메인 페이지 인터랙션 JavaScript**:
+```javascript
+// 스크롤 애니메이션
+function initScrollAnimation() {
+    const heroSection = document.querySelector('.hero-text-section');
+    // 패럴랙스 효과 구현
+}
+
+// 페이드인 애니메이션
+function initFadeInAnimation() {
+    const sections = document.querySelectorAll('.section');
+    // Intersection Observer로 섹션별 페이드인 효과
+}
+```
+
+### 📐 반응형 최적화
+
+**태블릿 (1200px 이하)**:
+```css
+.hero-text-section {
+    padding: 50px 0;
+    margin-bottom: 60px;
+}
+
+.hero-text-content p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.main_title_txt01 {
+    font-size: 28px;
+}
+
+#container {
+    width: calc(100vw - 380px);
+    overflow-x: hidden;
+}
+```
+
+**모바일 (768px 이하)**:
+```css
+.hero-text-section {
+    padding: 40px 0;
+    margin-bottom: 40px;
+}
+
+.hero-text-content p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.main_title_txt01 {
+    font-size: 24px;
+}
+
+#container {
+    width: 100vw;
+    overflow-x: hidden;
+}
+```
+
+### 🎨 시각적 개선 사항
+
+**1. 콘텐츠 영역 완전 최적화**:
+- 좌우 스크롤바 완전 제거
+- 화면 너비에 완벽하게 맞는 콘텐츠 표시
+- 모든 반응형 단계에서 스크롤바 방지
+
+**2. Hero 섹션 추가**:
+- 브랜드 메시지가 담긴 상단 텍스트 섹션
+- 우아한 배경색과 여백으로 임팩트 증대
+- 반응형 타이포그래피 적용
+
+**3. 메인 콘텐츠 정리**:
+- 불필요한 설명칸 제거로 깔끔한 레이아웃
+- 제목만 남겨 더욱 임팩트 있는 섹션 헤더
+- 콘텐츠 집중도 향상
+
+**4. 헤더 스타일 정리**:
+- 모든 구분선 제거로 미니멀한 디자인
+- 그림자 효과 제거로 플랫 디자인 구현
+- 더욱 깔끔하고 현대적인 사이드바
+
+### 🔧 보수 및 추가 수정 방법
+
+#### 1. Hero 텍스트 변경
+**파일**: `/sde_design/skin2/index.html` (라인 8-12)
+```html
+<section class="hero-text-section">
+	<div class="hero-text-content">
+		<p>여기에 원하는 텍스트를 입력하세요.<br>
+		여러 줄로 나눠서 작성할 수 있습니다.</p>
+	</div>
+</section>
+```
+
+#### 2. Hero 섹션 스타일 변경
+**파일**: `/sde_design/skin2/layout/basic/css/main.css`
+```css
+.hero-text-section {
+    background: #your-color; /* 배경색 변경 */
+    padding: 80px 0; /* 여백 조정 */
+}
+
+.hero-text-content p {
+    font-size: 20px; /* 폰트 크기 변경 */
+    color: #your-color; /* 텍스트 색상 변경 */
+}
+```
+
+#### 3. 설명칸 다시 추가
+**파일**: `/sde_design/skin2/index.html`
+```html
+<div class="main_title ez-align-left" data-ez-role="ez-align" data-ez-align="left">
+	<div class="main_title_txt01" data-ez-role="title">Top seller</div>
+	<div class="main_title_txt02" data-ez-role="subtitle">지금 가장 인기있는</div>
+</div>
+```
+
+#### 4. 헤더 구분선 다시 추가
+**파일**: `/sde_design/skin2/layout/basic/css/sidebar-header.css`
+```css
+#sidebar-header {
+    border-right: 1px solid #e0e0e0;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-top-area {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-logo-area {
+    border-top: 1px solid #f0f0f0;
+}
+```
+
+### ⚠️ 주의사항 (6차 수정)
+
+1. **스크롤바 제거**: `overflow-x: hidden`으로 인해 긴 콘텐츠가 잘릴 수 있으니 확인 필요
+2. **Hero 섹션**: 모바일에서 텍스트가 너무 길면 가독성 저하 가능
+3. **설명칸 제거**: SEO에 미치는 영향 검토 필요
+4. **캐시 이슈**: CSS/JS 파일 변경 후 브라우저 캐시 삭제 필요
+5. **반응형 테스트**: 다양한 화면 크기에서 레이아웃 확인 권장
+
+---
+
+## 🔄 5차 수정: 로그인/로그아웃 기능 및 가로 레이아웃 적용 (2025-09-03)
+
+### 📋 5차 작업 개요
+- **수정일**: 2025년 9월 3일
+- **작업자**: Claude Code
+- **작업내용**: 헤더 내부 레이아웃을 수직에서 수평으로 변경 및 로그인 기능 수정
+- **변경 범위**: 헤더 HTML 구조 및 CSS 레이아웃 전면 변경
+
+### 🎯 5차 변경 목표
+- **로그인 기능**: CAFE24 모듈 태그 적용으로 로그인/로그아웃 상태별 표시
+- **레이아웃 변경**: 헤더 내부 요소들을 세로 배치에서 가로 배치로 변경
+- **줄바꿈 적용**: 요소가 많을 경우 자동 줄바꿈으로 반응형 대응
+- **스크롤 제거**: 헤더 스크롤 완전 제거로 모든 요소가 한 화면에 표시
+
+### 📂 5차 주요 변경 사항
+
+#### 1. sde_design/skin2/layout/basic/header.html 구조 변경
+**로그인/로그아웃 기능 수정**:
+```html
+<!-- 기존 방식 제거 -->
+<a data-ez-item="login" module="Layout_statelogoff" href="/member/login.html">Login</a>
+<a data-ez-item="logout" module="Layout_stateLogon" href="{$action_logout}" style="display:none;">Logout</a>
+
+<!-- CAFE24 모듈 방식으로 변경 -->
+<span module="Layout_statelogoff">
+	<a href="/member/login.html">Login</a>
+</span>
+<span module="Layout_stateLogon">
+	<a href="{$action_logout}">Logout</a>
+	<a href="/myshop/index.html">My</a>
+</span>
+```
+
+**가로 나열 구조로 변경**:
+```html
+<!-- 기존 ul/li 구조 제거 -->
+<ul>
+	<li><a href="/">Shop</a></li>
+	<li><a href="/member/login.html">Login</a></li>
+</ul>
+
+<!-- 직접 a 태그 가로 배치로 변경 -->
+<nav class="service-nav">
+	<a href="/">Shop</a>
+	<a href="/member/login.html">Login</a>
+	<a href="/myshop/index.html">My</a>
+</nav>
+```
+
+#### 2. sde_design/skin2/layout/basic/css/sidebar-header.css 대폭 수정
+**서비스 네비게이션 Flexbox 레이아웃**:
+```css
+/* 기존 수직 레이아웃 제거 */
+.service-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.service-nav ul li {
+    margin-bottom: 15px;
+}
+
+/* Flexbox 가로 레이아웃으로 변경 */
+.service-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.service-nav a {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    padding: 8px 12px;
+    white-space: nowrap;
+}
+
+.service-nav span {
+    display: contents;
+}
+```
+
+**카테고리 네비게이션 Flexbox 레이아웃**:
+```css
+/* 기존 수직 레이아웃 제거 */
+.category-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.category-nav ul li {
+    margin-bottom: 20px;
+}
+
+/* Flexbox 가로 레이아웃으로 변경 */
+.category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+}
+
+.category-nav a {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #333;
+    padding: 12px 16px;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+}
+
+.category-nav a:hover {
+    transform: translateY(-2px); /* 위로 살짝 이동 효과 */
+}
+```
+
+**헤더 스크롤 제거**:
+```css
+#sidebar-header {
+    overflow-y: hidden; /* auto에서 hidden으로 변경 */
+}
+```
+
+#### 3. sde_design/skin2/layout/basic/js/sidebar-header.js 업데이트
+**드롭다운 메뉴 JavaScript 수정**:
+```javascript
+// 기존 서브메뉴 방식 제거
+function initSubMenu() {
+    const customCareLink = document.querySelector('.service-nav a[data-ez-item="board"]');
+    const subMenu = document.querySelector('.service-nav .sub-menu');
+    // ...
+}
+
+// 드롭다운 방식으로 변경
+function initDropdownMenu() {
+    const customCareDropdown = document.querySelector('.custom-care-dropdown');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    
+    // 클릭으로 드롭다운 토글 (모바일 대응)
+    dropdownToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isOpen = dropdownMenu.style.display === 'block';
+        dropdownMenu.style.display = isOpen ? 'none' : 'block';
+    });
+}
+```
+
+### 📐 레이아웃 변화 비교
+
+**변경 전 (수직 배치)**:
+```
+┌─────────────────┐
+│ Shop            │
+│ Login           │
+│ My              │
+│ Custom Care     │
+├─────────────────┤
+│ New arrivals    │
+│ Best            │
+│ Outers          │
+│ Tops            │
+│ Bottoms         │
+│ Accessories     │
+├─────────────────┤
+│ [Logo]          │
+└─────────────────┘
+```
+
+**변경 후 (수평 배치)**:
+```
+┌─────────────────┐
+│ Shop Login My   │
+│ Custom Care     │
+├─────────────────┤
+│ New arrivals    │
+│ Best Outers     │
+│ Tops Bottoms    │
+│ Accessories     │
+├─────────────────┤
+│ [Logo]          │
+└─────────────────┘
+```
+
+### 🎨 시각적 개선 사항
+
+**1. 공간 효율성 대폭 증대**:
+- 세로 스크롤 제거로 모든 요소가 한 화면에 표시
+- 가로 공간 활용으로 더 많은 정보를 컴팩트하게 배치
+- 450px 헤더 폭을 최대한 활용
+
+**2. 사용자 경험 개선**:
+- 스크롤 없이 모든 메뉴에 즉시 접근 가능
+- flex-wrap으로 화면 크기에 따른 자동 줄바꿈
+- 호버 효과 차별화 (위로 이동 vs 옆으로 이동)
+
+**3. 모던한 인터페이스**:
+- flexbox 기반의 최신 레이아웃 방식
+- 깔끔한 간격 및 패딩 조정
+- 반응형 친화적 구조
+
+### 🔧 보수 및 추가 수정 방법
+
+#### 1. 로그인 버튼 스타일 변경
+**파일**: `/sde_design/skin2/layout/basic/css/sidebar-header.css`
+```css
+.service-nav span[module="Layout_statelogoff"] a {
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+}
+
+.service-nav span[module="Layout_stateLogon"] a {
+    color: #dc3545; /* 로그아웃은 빨간색 */
+}
+```
+
+#### 2. 가로 배치 간격 조정
+```css
+.service-nav {
+    gap: 30px; /* 20px에서 30px로 증가 */
+}
+
+.category-nav {
+    gap: 20px; /* 24px에서 20px로 감소 */
+}
+```
+
+#### 3. 수직 배치로 되돌리기
+**HTML 구조 복원**:
+```html
+<nav class="service-nav">
+    <ul>
+        <li><a href="/">Shop</a></li>
+        <li><a href="/member/login.html">Login</a></li>
+    </ul>
+</nav>
+```
+
+**CSS 복원**:
+```css
+.service-nav {
+    display: block; /* flex에서 block으로 */
+}
+
+.service-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.service-nav ul li {
+    margin-bottom: 15px;
+}
+```
+
+### ⚠️ 주의사항 (5차 수정)
+
+1. **CAFE24 모듈**: `Layout_statelogoff/Layout_stateLogon` 모듈이 정상 작동하는지 확인 필요
+2. **줄바꿈**: 메뉴 항목이 많을 경우 줄바꿈으로 인한 레이아웃 변화 고려
+3. **모바일 대응**: 작은 화면에서 가로 배치가 적절한지 확인 필요
+4. **브라우저 호환성**: flexbox 지원이 제한된 구형 브라우저 고려
+5. **접근성**: 키보드 네비게이션 및 스크린 리더 호환성 확인
+
+---
+
+## 🔄 4차 수정: 헤더 폭 확대 및 콘텐츠 최적화 (2025-09-02 18:30)
+
+### 📋 4차 작업 개요
+- **수정일**: 2025년 9월 2일 18:30 (KST)
+- **작업자**: Claude Code
+- **작업내용**: 좌측 고정 헤더 폭을 50% 이상 확대하고 콘텐츠 영역 최적화
+- **변경 범위**: 헤더 크기 및 반응형 레이아웃 전체 조정
+
+### 🎯 4차 변경 목표
+- **헤더 폭 확대**: 280px → 450px (61% 증가)
+- **콘텐츠 최적화**: 헤더를 제외한 화면에 딱 맞는 가로폭 설정
+- **반응형 개선**: 다양한 화면 크기에 맞는 브레이크포인트 재조정
+- **사용성 향상**: 더 넓은 공간을 활용한 폰트 크기 및 여백 최적화
+
+### 📂 4차 주요 변경 사항
+
+#### sde_design/skin2/layout/basic/css/sidebar-header.css 대폭 수정
+
+**1. 헤더 폭 확대**:
+```css
+/* 기존 */
+#sidebar-header {
+    width: 280px;
+}
+body {
+    margin-left: 280px;
+}
+
+/* 변경 후 */
+#sidebar-header {
+    width: 450px;
+}
+body {
+    margin-left: 450px;
+}
+```
+
+**2. 콘텐츠 영역 최적화**:
+```css
+#container {
+    max-width: calc(100vw - 450px);
+}
+
+#contents {
+    padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+```
+
+**3. 폰트 크기 및 여백 증대**:
+- 서비스 메뉴 폰트: 16px → 18px
+- 카테고리 메뉴 폰트: 18px → 22px
+- 패딩: 20px → 30px (상하좌우)
+- 로고 최대 크기: 120px → 160px
+
+**4. 반응형 브레이크포인트 재조정**:
+
+**데스크탑 (1201px 이상)**:
+- 헤더: 450px
+- 콘텐츠: calc(100vw - 450px)
+
+**태블릿 (769px - 1200px)**:
+```css
+#sidebar-header { width: 380px; }
+body { margin-left: 380px; }
+#container { max-width: calc(100vw - 380px); }
+```
+
+**모바일 (768px 이하)**:
+```css
+#sidebar-header { width: 320px; }
+body { margin-left: 0; }
+#container { max-width: 100vw; }
+```
+
+### 📐 화면 크기별 헤더 폭 비교
+
+| 화면 크기 | 기존 헤더 폭 | 새 헤더 폭 | 증가율 |
+|-----------|-------------|------------|--------|
+| 데스크탑  | 280px       | 450px      | +61%   |
+| 태블릿    | 260px       | 380px      | +46%   |
+| 모바일    | 슬라이드    | 320px      | -      |
+
+### 🎨 시각적 개선 사항
+
+**폰트 크기 확대**:
+- 더 읽기 쉬운 서비스 메뉴 (18px)
+- 임팩트 있는 카테고리 메뉴 (22px)
+- 더 큰 로고 표시 (160px)
+
+**여백 및 패딩 최적화**:
+- 상하 패딩: 30px → 40px
+- 좌우 패딩: 20px → 30px
+- 메뉴 간격 확대
+
+**콘텐츠 영역 최적화**:
+- 화면 너비에서 헤더 폭을 정확히 제외한 최대 너비 설정
+- box-sizing: border-box로 패딩 포함 계산
+
+---
+
 ## 🔄 3차 수정: 좌측 고정 헤더 레이아웃 변경 (2025-09-02 18:00)
 
 ### 📋 3차 작업 개요
 - **수정일**: 2025년 9월 2일 18:00 (KST)
-- **작업자**: Claude Code
+- **작업자**: Claude Code  
 - **작업내용**: 기존 상단 헤더를 좌측 고정형 사이드바 헤더로 완전 변경
 - **변경 범위**: SKIN2 헤더 레이아웃 전체 재구성
 
@@ -559,8 +1195,11 @@ h1, h2, h3, h4, h5, h6 {
 3. 🔄 `sde_design/skin2/layout/basic/header.html` (네비게이션 변경 → 좌측 고정형으로 대폭 수정)
 
 ### 3차 수정 (좌측 고정 헤더):
-4. 🆕 `sde_design/skin2/layout/basic/css/sidebar-header.css` (좌측 고정 헤더 스타일)
+4. 🔄 `sde_design/skin2/layout/basic/css/sidebar-header.css` (좌측 고정 헤더 스타일 → 4차에서 폭 확대)
 5. 🆕 `sde_design/skin2/layout/basic/js/sidebar-header.js` (모바일 반응형 JavaScript)
+
+### 4차 수정 (헤더 폭 확대):
+6. ✅ `sde_design/skin2/layout/basic/css/sidebar-header.css` (헤더 450px 확대, 반응형 개선)
 
 ### 📤 서버 업로드 순서 권장:
 1. **1단계**: layout.html + font.css (폰트 적용)
@@ -569,15 +1208,29 @@ h1, h2, h3, h4, h5, h6 {
 4. **확인**: 각 단계별로 웹사이트에서 정상 작동 확인
 
 ### 🔍 업로드 후 확인사항:
+
+#### 기본 기능 확인:
 - [ ] 폰트가 Switzer + 나눔스퀘어로 적용되었는지 확인
-- [ ] 헤더가 좌측에 고정되어 표시되는지 확인 (280px 너비)
-- [ ] 콘텐츠 영역이 좌측 여백(margin-left: 280px)을 가지고 있는지 확인
-- [ ] 스크롤 시 헤더는 고정되고 콘텐츠만 스크롤되는지 확인
 - [ ] 서비스 메뉴 4개(Shop, Login, My, Custom Care)가 상단에 표시되는지 확인
 - [ ] 카테고리 6개(New arrivals, Best, Outers, Tops, Bottoms, Accessories)가 중앙에 표시되는지 확인
 - [ ] 하단에 로고가 표시되고 클릭 시 메인페이지로 이동하는지 확인
-- [ ] 모바일(768px 이하)에서 햄버거 메뉴로 전환되는지 확인
+
+#### 헤더 크기 및 레이아웃 확인:
+- [ ] **데스크탑**: 헤더가 좌측에 고정되어 표시되는지 확인 (450px 너비)
+- [ ] **데스크탑**: 콘텐츠 영역이 좌측 여백(margin-left: 450px)을 가지고 있는지 확인
+- [ ] **태블릿** (1200px 이하): 헤더 너비가 380px로 축소되는지 확인
+- [ ] **모바일** (768px 이하): 햄버거 메뉴로 전환되고 너비가 320px인지 확인
+
+#### 반응형 및 인터랙션 확인:
+- [ ] 스크롤 시 헤더는 고정되고 콘텐츠만 스크롤되는지 확인
+- [ ] 콘텐츠 영역이 화면에서 헤더를 제외한 공간을 완전히 활용하는지 확인
 - [ ] 모바일에서 햄버거 버튼 클릭 시 사이드바가 슬라이드되는지 확인
+- [ ] 다양한 화면 크기에서 헤더와 콘텐츠가 겹치지 않는지 확인
+
+#### 폰트 및 디자인 확인:
+- [ ] 서비스 메뉴 폰트 크기가 18px로 표시되는지 확인
+- [ ] 카테고리 메뉴 폰트 크기가 22px로 표시되는지 확인
+- [ ] 로고 크기가 적절히 크게 표시되는지 확인 (최대 160px)
 
 ## 🔧 추후 작업 권장사항
 

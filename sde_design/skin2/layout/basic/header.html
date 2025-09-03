@@ -1,43 +1,47 @@
-<!-- SKIN2 전용 좌측 고정 헤더 -->
+<!-- SKIN2 전용 좌측 고정 헤더 - 가로 나열 형태 -->
 <header id="sidebar-header" class="sidebar-fixed">
-	<!-- First: Top Area - 서비스 관련 항목 -->
-	<div class="sidebar-top-area">
-		<nav class="service-nav">
-			<ul>
-				<li><a href="/">Shop</a></li>
-				<li><a data-ez-item="login" module="Layout_statelogoff" href="/member/login.html">Login</a></li>
-				<li><a data-ez-item="mypage" module="Layout_stateLogon" href="/myshop/index.html">My</a></li>
-				<li>
-					<a data-ez-item="board" href="#none">Custom Care</a>
-					<ul module="Layout_BoardInfo" class="sub-menu">
+	<div class="sidebar-content">
+		<!-- Top Area - 서비스 관련 항목 (가로 나열) -->
+		<div class="sidebar-top-area">
+			<nav class="service-nav">
+				<a href="/">Shop</a>
+				<!-- 로그인/로그아웃 상태별 표시 -->
+				<span module="Layout_statelogoff">
+					<a href="/member/login.html">Login</a>
+				</span>
+				<span module="Layout_stateLogon">
+					<a href="{$action_logout}">Logout</a>
+					<a href="/myshop/index.html">My</a>
+				</span>
+				<div class="custom-care-dropdown">
+					<a href="#none" class="dropdown-toggle">Custom Care</a>
+					<ul module="Layout_BoardInfo" class="dropdown-menu">
 						<li><a href="{$link_board_list}">{$board_name}</a></li>
 						<li><a href="{$link_board_list}">{$board_name}</a></li>
 					</ul>
-				</li>
-			</ul>
-		</nav>
-	</div>
+				</div>
+			</nav>
+		</div>
 
-	<!-- Second: 카테고리 메뉴 -->
-	<div class="sidebar-category-area">
-		<nav class="category-nav">
-			<ul>
-				<li><a href="/product/list.html?module=product_listmain_1">New arrivals</a></li>
-				<li><a href="/product/list.html?best=true">Best</a></li>
-				<li><a href="/product/list.html?cate_no=1">Outers</a></li>
-				<li><a href="/product/list.html?cate_no=2">Tops</a></li>
-				<li><a href="/product/list.html?cate_no=3">Bottoms</a></li>
-				<li><a href="/product/list.html?cate_no=4">Accessories</a></li>
-			</ul>
-		</nav>
-	</div>
+		<!-- Category Area - 상품 카테고리 (가로 나열) -->
+		<div class="sidebar-category-area">
+			<nav class="category-nav">
+				<a href="/product/list.html?module=product_listmain_1">New arrivals</a>
+				<a href="/product/list.html?best=true">Best</a>
+				<a href="/product/list.html?cate_no=1">Outers</a>
+				<a href="/product/list.html?cate_no=2">Tops</a>
+				<a href="/product/list.html?cate_no=3">Bottoms</a>
+				<a href="/product/list.html?cate_no=4">Accessories</a>
+			</nav>
+		</div>
 
-	<!-- Third: 로고 -->
-	<div class="sidebar-logo-area">
-		<div class="sidebar-logo">
-			<a href="/">
-				<img src="/logo.png" alt="{$mall_name}" />
-			</a>
+		<!-- Logo Area -->
+		<div class="sidebar-logo-area">
+			<div class="sidebar-logo">
+				<a href="/">
+					<img src="/logo.png" alt="{$mall_name}" />
+				</a>
+			</div>
 		</div>
 	</div>
 </header>

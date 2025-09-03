@@ -1,0 +1,161 @@
+/* 
+ * SKIN2 전용 메인 페이지 스타일
+ * Hero 텍스트 섹션 및 메인 콘텐츠 스타일링
+ */
+
+/* Hero 텍스트 섹션 */
+.hero-text-section {
+    background: #f8f9fa;
+    padding: 60px 0;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.hero-text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-text-content p {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+/* 첫 번째 섹션 여백 조정 */
+.section:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* 메인 타이틀 스타일 조정 */
+.main_title_txt01 {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 40px;
+}
+
+/* Trending now 이미지 갤러리 1행 3개 정렬 */
+.main_3dan_banner {
+    margin-top: 40px;
+}
+
+.main_3dan_banner ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main_3dan_banner ul li {
+    flex: 1 1 calc(33.333% - 14px);
+    min-width: 280px;
+    max-width: none;
+    margin: 0;
+}
+
+.main_3dan_banner ul li {
+    position: relative;
+}
+
+.main_3dan_banner ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.main_3dan_banner ul li picture,
+.main_3dan_banner ul li img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 이미지 텍스트 오버레이 */
+.main_banner_txt {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+}
+
+.main_banner_txt01 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.main_banner_more {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* 반응형: 태블릿 */
+@media screen and (max-width: 1200px) {
+    .hero-text-section {
+        padding: 50px 0;
+        margin-bottom: 60px;
+    }
+    
+    .hero-text-content p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+    
+    .main_title_txt01 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .main_3dan_banner ul li {
+        min-width: 240px;
+    }
+}
+
+/* 반응형: 모바일 */
+@media screen and (max-width: 768px) {
+    .hero-text-section {
+        padding: 40px 0;
+        margin-bottom: 40px;
+    }
+    
+    .hero-text-content {
+        padding: 0 16px;
+    }
+    
+    .hero-text-content p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    .main_title_txt01 {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+    
+    .main_3dan_banner ul {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .main_3dan_banner ul li {
+        flex: 1 1 100%;
+        min-width: auto;
+        max-width: 100%;
+    }
+}

@@ -56,34 +56,25 @@
         });
     }
 
-    // 서브메뉴 토글 (Custom Care)
-    function initSubMenu() {
-        const customCareLink = document.querySelector('.service-nav a[data-ez-item="board"]');
-        const subMenu = document.querySelector('.service-nav .sub-menu');
+    // 드롭다운 메뉴 토글 (Custom Care)
+    function initDropdownMenu() {
+        const customCareDropdown = document.querySelector('.custom-care-dropdown');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
 
-        if (!customCareLink || !subMenu) return;
+        if (!customCareDropdown || !dropdownToggle || !dropdownMenu) return;
 
-        let isSubMenuOpen = false;
-
-        customCareLink.addEventListener('click', function(e) {
+        // 클릭으로 드롭다운 토글 (모바일 대응)
+        dropdownToggle.addEventListener('click', function(e) {
             e.preventDefault();
-            isSubMenuOpen = !isSubMenuOpen;
-            
-            if (isSubMenuOpen) {
-                subMenu.style.display = 'block';
-                customCareLink.style.color = '#000';
-            } else {
-                subMenu.style.display = 'none';
-                customCareLink.style.color = '#333';
-            }
+            const isOpen = dropdownMenu.style.display === 'block';
+            dropdownMenu.style.display = isOpen ? 'none' : 'block';
         });
 
-        // 외부 클릭 시 서브메뉴 닫기
+        // 외부 클릭 시 드롭다운 닫기
         document.addEventListener('click', function(e) {
-            if (!customCareLink.contains(e.target) && !subMenu.contains(e.target)) {
-                isSubMenuOpen = false;
-                subMenu.style.display = 'none';
-                customCareLink.style.color = '#333';
+            if (!customCareDropdown.contains(e.target)) {
+                dropdownMenu.style.display = 'none';
             }
         });
     }
@@ -112,22 +103,11 @@
         });
     }
 
-    // 스크롤 시 헤더 그림자 효과
+    // 스크롤 효과 (그림자 제거됨)
     function initScrollEffect() {
-        const sidebar = document.getElementById('sidebar-header');
-        let lastScrollY = 0;
-
-        window.addEventListener('scroll', function() {
-            const currentScrollY = window.scrollY;
-            
-            if (currentScrollY > 50) {
-                sidebar.style.boxShadow = '4px 0 12px rgba(0, 0, 0, 0.15)';
-            } else {
-                sidebar.style.boxShadow = '2px 0 8px rgba(0, 0, 0, 0.1)';
-            }
-
-            lastScrollY = currentScrollY;
-        });
+        // 그림자 효과 완전 제거
+        // 헤더와 콘텐츠 섹션 간 경계를 없애기 위해 그림자 제거
+        return;
     }
 
     // 로딩 완료 후 초기화
@@ -139,7 +119,7 @@
         }
 
         initMobileMenu();
-        initSubMenu();
+        initDropdownMenu();
         setActiveMenu();
         initScrollEffect();
 

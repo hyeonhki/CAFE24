@@ -1,35 +1,20 @@
 <!--@layout(/layout/basic/layout.html)-->
 <!--@js(/layout/basic/js/main.js)-->
 <!--@css(/layout/basic/css/main.css)-->
-<!--@import(/smart-banner/shop1/smart-banner-admin-RES00003.html)-->
-<section class="section main_product_slide" data-ez-module="product-list-slide/2" data-ez-layout="grid4_slide" data-ez="contents-0ytkjeb-1">
-	<ez-prop data-version="1.0.0" type="layout">
-		<ez-var data-prop="layout" data-namespace="ez.module.product-list-slide.layout" data-type="array">
-			<ez-item data-id="grid3_slide" data-name="일반3단형(PC 3열/MOBILE 2열)"></ez-item>
-			<ez-item data-id="grid4_slide" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
-			<ez-item data-id="grid5_slide" data-name="일반5단형(PC 5열/MOBILE 3열)"></ez-item>
-			<ez-item data-id="grid3_slide list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 2열)"></ez-item>
-			<ez-item data-id="grid4_slide list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
-			<ez-item data-id="grid5_slide list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 3열)"></ez-item>
-		</ez-var>
-	</ez-prop>
 
-	<div class="main_title ez-align-left" data-ez-role="ez-align" data-ez-align="left"><!-- Top seller 타이틀 수정하는곳 -->
-		<div class="main_title_txt01" data-ez-role="title">Top seller</div>
-		<div class="main_title_txt02" data-ez-role="subtitle">지금 가장 인기있는</div>
-	</div><!-- //main_title -->
-
-	<div data-ez-holder="product_listmain">
-		<div module="product_listmain_1" class="ec-base-product swiper-container special_slide">
-			<ul class="prdList swiper-wrapper grid4_slide" data-ez-role="layout ez-discount-tag">
-				<!--@import(/product/list_product_slide.html)-->
-			</ul>
-			<div class="swiper-scrollbar"></div>
-		</div>
+<!-- Hero Section 상단 텍스트 -->
+<section class="hero-text-section">
+	<div class="hero-text-content">
+		<p>We travel because we need to, because distance and difference are the secret tonic to creativity.<br>
+		When we get home, home is still the same, but something in our minds has changed, and that changes everything.<br>
+		And that's why we keep exploring.</p>
 	</div>
-	<div class="swiper-button-next swiper-button-next-special_slide"><i aria-hidden="true" class="icon icoArrowRight"></i>다음</div>
-	<div class="swiper-button-prev swiper-button-prev-special_slide"><i aria-hidden="true" class="icon icoArrowLeft"></i>이전</div>
 </section>
+
+<!-- Hero 텍스트 다음에 배너 이미지 -->
+<!--@import(/smart-banner/shop1/smart-banner-admin-RES00003.html)-->
+
+<!-- Trending now 배너 섹션을 Hero 텍스트 아래로 이동 -->
 <section class="section main_image_text_gallery" data-ez-module="image-gallery/2" data-ez-role="style.background" data-ez-item-length="3" data-ez="contents-0w1pm37-1">
 	<ez-prop data-version="1.0.0" type="layout">
 		<ez-var data-prop="image" data-namespace="ez.module.image-gallery.image">
@@ -51,7 +36,6 @@
 	</ez-prop>
 	<div class="main_title ez-align-center" data-ez-role="ez-align" data-ez-align="center"><!-- Trending now 수정하는곳 -->
 		<div class="main_title_txt01" data-ez-role="title">Trending now</div>
-		<div class="main_title_txt02" data-ez-role="desc">에디터가 선정한</div>
 	</div><!-- //main_title -->
 
     <div class="main_3dan_banner ez-mobile-layout-slide" data-ez-role="ez-mobile-layout" data-ez-mobile-layout="slide"><!-- 메인 3단배너 수정하는곳 -->
@@ -98,6 +82,37 @@
 		<div class="main_image_text_gallery_more"><a href="#none" class="main_image_text_gallery_more_btn">더보기</a></div>
 	</div><!-- //main_3dan_banner -->
 </section>
+
+<!-- Top seller 섹션 -->
+<section class="section main_product_slide" data-ez-module="product-list-slide/2" data-ez-layout="grid4_slide" data-ez="contents-0ytkjeb-1">
+	<ez-prop data-version="1.0.0" type="layout">
+		<ez-var data-prop="layout" data-namespace="ez.module.product-list-slide.layout" data-type="array">
+			<ez-item data-id="grid3_slide" data-name="일반3단형(PC 3열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid4_slide" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5_slide" data-name="일반5단형(PC 5열/MOBILE 3열)"></ez-item>
+			<ez-item data-id="grid3_slide list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid4_slide list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5_slide list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 3열)"></ez-item>
+		</ez-var>
+	</ez-prop>
+
+	<div class="main_title ez-align-left" data-ez-role="ez-align" data-ez-align="left"><!-- Top seller 타이틀 수정하는곳 -->
+		<div class="main_title_txt01" data-ez-role="title">Top seller</div>
+	</div><!-- //main_title -->
+
+	<div data-ez-holder="product_listmain">
+		<div module="product_listmain_1" class="ec-base-product swiper-container special_slide">
+			<ul class="prdList swiper-wrapper grid4_slide" data-ez-role="layout ez-discount-tag">
+				<!--@import(/product/list_product_slide.html)-->
+			</ul>
+			<div class="swiper-scrollbar"></div>
+		</div>
+	</div>
+	<div class="swiper-button-next swiper-button-next-special_slide"><i aria-hidden="true" class="icon icoArrowRight"></i>다음</div>
+	<div class="swiper-button-prev swiper-button-prev-special_slide"><i aria-hidden="true" class="icon icoArrowLeft"></i>이전</div>
+</section>
+
+<!-- New Arrivals 섹션 -->
 <section class="section main_product_list" data-ez-module="product-list/1" data-ez-layout="grid4" data-ez="contents-11363rz-1" style="margin-bottom: 100px;">
 	<ez-prop data-version="1.0.0" type="layout">
 		<ez-var data-prop="layout" data-namespace="ez.module.product-list.layout" data-type="array">
@@ -111,7 +126,6 @@
 	</ez-prop>
 	<div class="main_title ez-align-left" data-ez-role="ez-align" data-ez-align="left"><!-- New Arrivals 타이틀 수정하는곳 -->
 		<div class="main_title_txt01" data-ez-role="title">New Arrivals</div>
-		<div class="main_title_txt02" data-ez-role="subtitle">놓치기에 아쉬운</div>
 	</div><!-- //main_title -->
 	<div data-ez-holder="product_listmain">
 		<div module="product_listmain_1" class="ec-base-product">

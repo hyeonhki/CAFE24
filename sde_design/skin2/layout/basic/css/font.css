@@ -1,68 +1,105 @@
 /* 
- * SKIN2 전용 폰트 스타일
- * Switzer (영문) + 나눔스퀘어 (국문)
+ * SKIN2 전용 폰트 설정
+ * Roboto(영문) + Noto Sans KR(국문) 조합
  */
+
+/* @font-face 정의 */
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Noto Sans KR'), url('https://fonts.gstatic.com/s/notosanskr/v27/PbykFmXiEBPT4ITbgNA5Cgm20xz64px_1hVWr0wuPNGmlQNMEfD4.woff2') format('woff2');
+    unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBHMdazTgWw.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBHMdazTgWw.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
 
 /* 기본 body 폰트 설정 */
 body {
-    font-family: 'Switzer', 'Nanum Square', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    font-family: 'Roboto', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
     font-weight: 400;
     line-height: 1.6;
+    letter-spacing: -0.02em;
 }
 
-/* 제목 폰트 */
+/* 제목 폰트 (h1-h6) */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     font-weight: 700;
+    letter-spacing: -0.03em;
 }
 
 /* 강조 텍스트 */
 strong, b {
-    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     font-weight: 700;
 }
 
 /* 한글 우선 적용이 필요한 영역 */
 .korean-priority {
-    font-family: 'Nanum Square', 'Switzer', sans-serif;
+    font-family: 'Noto Sans KR', 'Roboto', sans-serif;
 }
 
 /* 영문 우선 적용이 필요한 영역 */
 .english-priority {
-    font-family: 'Switzer', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* 버튼 폰트 */
 button, .btn, input[type="button"], input[type="submit"] {
-    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     font-weight: 500;
 }
 
 /* 입력 필드 폰트 */
 input, textarea, select {
-    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
 }
 
 /* 네비게이션 메뉴 */
 nav, .nav, .navigation {
-    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     font-weight: 500;
 }
 
 /* 제품 정보 텍스트 */
 .product-info, .prd-info {
-    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
 }
 
 /* 가격 표시 */
 .price, .amount {
-    font-family: 'Switzer', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 600;
 }
 
 /* 테이블 폰트 */
 table {
-    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+}
+
+/* 사이드바 헤더 폰트 */
+.service-nav a, .category-nav a {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
 }
 
 /* 폰트 weight 클래스 */
