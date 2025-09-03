@@ -1,6 +1,124 @@
-# CAFE24 SKIN2 폰트 변경 작업 - Action Log
+# CAFE24 SKIN2 커스터마이징 작업 - Action Log
 
-## 📋 작업 개요
+---
+
+## 🔄 2차 수정: 헤더 네비게이션 영문화 (2025-09-02 17:30)
+
+### 📋 2차 작업 개요
+- **수정일**: 2025년 9월 2일 17:30 (KST)
+- **작업자**: Claude Code
+- **작업내용**: SKIN2 헤더 네비게이션을 한글에서 영문으로 변경 및 카테고리 간소화
+- **변경 범위**: SKIN2 헤더 메뉴만 적용
+
+### 🎯 2차 변경 목표
+- **카테고리 개수**: 8개 → 4개로 축소
+- **언어**: 한글 → 영문으로 변경
+- **메뉴 방식**: 동적 → 정적으로 변경
+
+### 📂 2차 수정 파일
+
+#### sde_design/skin2/layout/basic/header.html (새로 생성)
+**작업 방법**: base/layout/basic/header.html을 복사 후 수정
+
+**변경된 카테고리 매핑**:
+```
+기존 (8개 한글):
+- 상의 → 제거
+- 하의 → 제거  
+- 아우터 → 제거
+- 신발 → 제거
+- 가방 → 제거
+- 악세서리 → 제거
+- 언더웨어/잠옷 → 제거
+- 기타 → 제거
+
+신규 (4개 영문):
+- Top (상의) → /product/list.html?cate_no=1
+- Bottom (하의) → /product/list.html?cate_no=2
+- Outer (아우터) → /product/list.html?cate_no=3
+- Accessories (악세서리) → /product/list.html?cate_no=4
+```
+
+### 🔧 보수 및 추가 수정 방법
+
+#### 1. 카테고리 추가/삭제 방법
+**파일 위치**: `/sde_design/skin2/layout/basic/header.html` (라인 75-80)
+
+**카테고리 추가**:
+```html
+<ul>
+    <li><a href="/product/list.html?cate_no=1">Top</a></li>
+    <li><a href="/product/list.html?cate_no=2">Bottom</a></li>
+    <li><a href="/product/list.html?cate_no=3">Outer</a></li>
+    <li><a href="/product/list.html?cate_no=4">Accessories</a></li>
+    <!-- 새 카테고리 추가 예시 -->
+    <li><a href="/product/list.html?cate_no=5">Shoes</a></li>
+</ul>
+```
+
+**카테고리 삭제**: 해당 `<li>` 태그 전체를 삭제
+
+#### 2. 카테고리 URL 변경 방법
+실제 CAFE24 관리자에서 설정한 카테고리 번호에 맞게 `cate_no=숫자` 부분을 수정:
+
+```html
+<!-- 예시: 카테고리 번호가 다를 경우 -->
+<li><a href="/product/list.html?cate_no=101">Top</a></li>
+<li><a href="/product/list.html?cate_no=102">Bottom</a></li>
+```
+
+#### 3. 카테고리명 변경 방법
+**영문 변경**: 태그 안의 텍스트만 수정
+```html
+<li><a href="/product/list.html?cate_no=1">Tops</a></li>  <!-- Top → Tops -->
+```
+
+**한글로 되돌리기**: 
+```html
+<li><a href="/product/list.html?cate_no=1">상의</a></li>
+```
+
+#### 4. 동적 메뉴로 되돌리기
+전체 카테고리 div를 원래대로 변경:
+```html
+<div module="Layout_category" class="top_category">
+    <!--@js(/js/module/layout/category.js)-->
+    <ul>
+        <li><a href="{$link_product_list}">{$name_or_img_tag}</a></li>
+        <li><a href="{$link_product_list}">{$name_or_img_tag}</a></li>
+    </ul>
+</div>
+```
+
+#### 5. 카테고리 스타일링 변경
+**CSS 파일**: `/sde_design/skin2/layout/basic/css/` 폴더에 새 CSS 파일 생성 또는 기존 파일 수정
+
+**예시**:
+```css
+.top_category ul li a {
+    font-family: 'Switzer', sans-serif;
+    font-weight: 500;
+    color: #333;
+    text-transform: uppercase; /* 영문 대문자 변환 */
+}
+
+.top_category ul li a:hover {
+    color: #000;
+    font-weight: 600;
+}
+```
+
+### ⚠️ 주의사항 (2차 수정)
+1. **카테고리 번호**: 실제 CAFE24 관리자에서 생성한 카테고리 번호와 일치해야 함
+2. **링크 테스트**: 각 카테고리 링크가 올바른 페이지로 연결되는지 확인 필요
+3. **SEO 고려**: 영문 카테고리명이 검색 엔진 최적화에 미치는 영향 검토 필요
+4. **사용자 경험**: 기존 한글 사용자들의 혼란 최소화 방안 고려
+
+---
+
+## 🔄 1차 수정: 폰트 변경 (2025-09-02 17:00)
+
+### 📋 1차 작업 개요
 - **작업일**: 2025년 9월 2일
 - **작업자**: Claude Code
 - **작업내용**: SKIN2 전용 폰트를 Switzer(영문) 및 나눔스퀘어(국문)로 변경
@@ -237,11 +355,25 @@ h1, h2, h3, h4, h5, h6 {
 - **다른 스킨**: 기존 폰트 설정 그대로 유지
 - **테마 변경**: SKIN2 내 모든 테마가 동일한 폰트 사용
 
-## ✅ 업로드 체크리스트 (SKIN2 전용)
+## ✅ 최종 업로드 체크리스트 (SKIN2 전용)
 
-1. [ ] `sde_design/skin2/layout/basic/layout.html` (새로 생성된 파일)
-2. [ ] `sde_design/skin2/layout/basic/css/font.css` (새로 생성된 파일)
-3. [ ] `sde_design/skin2/layout/basic/header.html` (새로 생성된 파일)
+### 1차 수정 (폰트 변경):
+1. ✅ `sde_design/skin2/layout/basic/layout.html` (폰트 설정)
+2. ✅ `sde_design/skin2/layout/basic/css/font.css` (폰트 스타일)
+
+### 2차 수정 (네비게이션 영문화):
+3. 🆕 `sde_design/skin2/layout/basic/header.html` (네비게이션 변경)
+
+### 📤 서버 업로드 순서 권장:
+1. **먼저**: layout.html + font.css (폰트 적용)
+2. **나중**: header.html (네비게이션 적용)
+3. **확인**: 각 단계별로 웹사이트에서 정상 작동 확인
+
+### 🔍 업로드 후 확인사항:
+- [ ] 폰트가 Switzer + 나눔스퀘어로 적용되었는지 확인
+- [ ] 헤더 메뉴가 4개 영문 카테고리로 표시되는지 확인
+- [ ] 각 카테고리 링크 클릭 시 올바른 페이지로 이동하는지 확인
+- [ ] 모바일에서도 정상 작동하는지 확인
 
 ## 🔧 추후 작업 권장사항
 
