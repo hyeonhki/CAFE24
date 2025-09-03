@@ -1,0 +1,112 @@
+/* 
+ * SKIN2 전용 Footer 스타일
+ * 스크롤 하단에만 표시되며 좌측 헤더 아래에도 배치
+ */
+
+/* Footer 컨테이너 - 화면 하단 고정, 전체 너비 */
+#skin2-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw; /* 전체 화면 너비 */
+    height: 10vh; /* 화면 높이의 1/10 */
+    background-color: #ffffff;
+    border-top: 1px solid #000000; /* 얇은 검은색 선 */
+    z-index: 1500;
+    display: none; /* 기본적으로 숨김 */
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+}
+
+/* Footer가 표시될 때 */
+#skin2-footer.show {
+    display: block;
+}
+
+/* Footer 내용 */
+.footer-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Footer 각 라인 */
+.footer-line1,
+.footer-line2 {
+    font-size: 9px; /* 매우 작은 폰트 */
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 300;
+}
+
+.footer-line1 {
+    margin-bottom: 4px;
+}
+
+/* Footer 링크 스타일 */
+.footer-line1 a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 2px;
+    font-size: 9px;
+    font-weight: 400;
+}
+
+.footer-line1 a:hover {
+    text-decoration: underline;
+}
+
+/* ID5AGIT 스타일 */
+.footer-line2 span {
+    font-weight: 500;
+    color: #000;
+}
+
+/* 좌측 헤더가 있는 경우 메인 콘텐츠 영역에 하단 여백 추가 */
+body {
+    padding-bottom: 10vh; /* Footer 높이만큼 하단 여백 */
+}
+
+/* 사이드바 Footer 관련 스타일 제거 - 통합 Footer 사용 */
+
+/* 반응형: 태블릿 */
+@media screen and (max-width: 1200px) {
+    .footer-line1,
+    .footer-line2 {
+        font-size: 8px;
+    }
+    
+    .footer-line1 a {
+        font-size: 8px;
+    }
+}
+
+/* 반응형: 모바일 */
+@media screen and (max-width: 768px) {
+    #skin2-footer {
+        height: 12vh; /* 모바일에서 조금 더 높이 */
+    }
+    
+    body {
+        padding-bottom: 12vh;
+    }
+    
+    .footer-line1,
+    .footer-line2 {
+        font-size: 7px;
+        white-space: normal; /* 모바일에서는 줄바꿈 허용 */
+    }
+    
+    .footer-line1 a {
+        font-size: 7px;
+    }
+    
+    /* 모바일에서는 통합 Footer 사용 */
+}
