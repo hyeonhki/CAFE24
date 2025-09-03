@@ -32,7 +32,7 @@
 .service-nav a {
     font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 300; /* 500에서 300으로 더 가볍게 */
     color: #333;
     text-decoration: none;
     padding: 8px 12px;
@@ -46,7 +46,7 @@
 
 .service-nav a:hover {
     color: #000;
-    font-weight: 600;
+    font-weight: 400; /* 600에서 400으로 더 가볍게 */
 }
 
 /* Custom Care 드롭다운 메뉴 */
@@ -103,6 +103,13 @@
 
 .category-nav {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.category-group-1,
+.category-group-2 {
+    display: flex;
     flex-wrap: wrap;
     gap: 24px;
     align-items: center;
@@ -111,7 +118,7 @@
 .category-nav a {
     font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 300; /* 400에서 300으로 더 가볍게 */
     color: #333;
     text-decoration: none;
     padding: 12px 16px;
@@ -122,15 +129,14 @@
 
 .category-nav a:hover {
     color: #000;
-    font-weight: 600;
+    font-weight: 400; /* 600에서 400으로 더 가볍게 */
     border-bottom-color: #000;
     transform: translateY(-2px);
 }
 
 /* New arrivals, Best 특별 스타일 */
-.category-nav a:first-child,
-.category-nav a:nth-child(2) {
-    font-weight: 500;
+.category-group-1 a {
+    font-weight: 400; /* New arrivals, Best에 특별 스타일 적용 */
     color: #000;
 }
 
@@ -138,6 +144,8 @@
 .sidebar-logo-area {
     padding: 30px;
     text-align: center;
+    margin-top: auto; /* 로고를 헤더 하단으로 푸시 */
+    padding-bottom: 50px; /* 하단 여백 증가 */
 }
 
 .sidebar-logo a {
@@ -200,6 +208,7 @@ body {
     
     .service-nav a {
         font-size: 16px;
+        font-weight: 300; /* 태블릿에서도 가벼운 폰트 유지 */
     }
 }
 
