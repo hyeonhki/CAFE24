@@ -31,7 +31,7 @@
 
 .service-nav a {
     font-family: 'Roboto', 'Noto Sans KR', sans-serif;
-    font-size: 18px;
+    font-size: 22px; /* 18px에서 22px로 category-area와 동일하게 */
     font-weight: 300; /* 500에서 300으로 더 가볍게 */
     color: #333;
     text-decoration: none;
@@ -104,14 +104,14 @@
 .category-nav {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px; /* 20px에서 12px로 줄임 */
 }
 
 .category-group-1,
 .category-group-2 {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 16px; /* 24px에서 16px로 줄임 */
     align-items: center;
 }
 
@@ -121,7 +121,7 @@
     font-weight: 300; /* 400에서 300으로 더 가볍게 */
     color: #333;
     text-decoration: none;
-    padding: 12px 16px;
+    padding: 8px 12px; /* 12px 16px에서 8px 12px로 줄임 */
     transition: all 0.3s ease;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
@@ -145,7 +145,7 @@
     padding: 30px;
     text-align: center;
     margin-top: auto; /* 로고를 헤더 하단으로 푸시 */
-    padding-bottom: 50px; /* 하단 여백 증가 */
+    padding-bottom: 80px; /* 하단 여백을 더 증가 (50px에서 80px로) */
 }
 
 .sidebar-logo a {
@@ -207,7 +207,7 @@ body {
     }
     
     .service-nav a {
-        font-size: 16px;
+        font-size: 20px; /* 16px에서 20px로 조정 (category-nav와 동일) */
         font-weight: 300; /* 태블릿에서도 가벼운 폰트 유지 */
     }
 }
