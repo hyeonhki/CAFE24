@@ -2,6 +2,200 @@
 
 ---
 
+## 🔄 3차 수정: 좌측 고정 헤더 레이아웃 변경 (2025-09-02 18:00)
+
+### 📋 3차 작업 개요
+- **수정일**: 2025년 9월 2일 18:00 (KST)
+- **작업자**: Claude Code
+- **작업내용**: 기존 상단 헤더를 좌측 고정형 사이드바 헤더로 완전 변경
+- **변경 범위**: SKIN2 헤더 레이아웃 전체 재구성
+
+### 🎯 3차 변경 목표
+- **레이아웃**: 상단 헤더 → 좌측 고정 사이드바로 변경
+- **고정 효과**: 스크롤 시 헤더 고정, 콘텐츠 영역만 스크롤
+- **메뉴 간소화**: 필요한 항목만 유지하여 깔끔한 네비게이션 구성
+- **반응형**: 모바일에서 햄버거 메뉴로 전환
+
+### 📂 3차 수정 파일
+
+#### 1. sde_design/skin2/layout/basic/header.html (대폭 수정)
+**변경 내용**: 전체 헤더 구조를 좌측 고정형으로 재구성
+
+**새로운 구조**:
+```html
+<!-- 기존 복잡한 헤더 구조 제거 -->
+<!-- 새로운 3단계 구조 -->
+<header id="sidebar-header" class="sidebar-fixed">
+    <!-- 1. Top Area: 서비스 관련 항목 -->
+    <div class="sidebar-top-area">
+        - Shop (메인 페이지)
+        - Login (로그인)
+        - My (마이페이지)
+        - Custom Care (고객센터)
+    </div>
+    
+    <!-- 2. Category Area: 상품 카테고리 -->
+    <div class="sidebar-category-area">
+        - New arrivals
+        - Best
+        - Outers
+        - Tops
+        - Bottoms
+        - Accessories
+    </div>
+    
+    <!-- 3. Logo Area: 브랜드 로고 -->
+    <div class="sidebar-logo-area">
+        - 로고 이미지 (/logo.png)
+    </div>
+</header>
+```
+
+**제거된 항목들**:
+- 회원가입, 내정보수정, 주문조회, 최근본상품
+- 상단 배너, 쇼핑정보, 장바구니/검색 아이콘
+- 기존 복잡한 네비게이션 구조
+
+#### 2. sde_design/skin2/layout/basic/css/sidebar-header.css (새로 생성)
+**작업 내용**: 좌측 고정 헤더 전용 스타일링
+
+**핵심 스타일**:
+```css
+/* 좌측 고정 포지션 */
+#sidebar-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    z-index: 1000;
+}
+
+/* 콘텐츠 영역 여백 */
+body {
+    margin-left: 280px;
+}
+
+/* 반응형 모바일 대응 */
+@media screen and (max-width: 768px) {
+    #sidebar-header {
+        transform: translateX(-100%);
+    }
+    body {
+        margin-left: 0;
+    }
+}
+```
+
+#### 3. sde_design/skin2/layout/basic/js/sidebar-header.js (새로 생성)
+**작업 내용**: 모바일 반응형 및 인터랙션 JavaScript
+
+**주요 기능**:
+- 모바일 햄버거 메뉴 토글
+- 서브메뉴(Custom Care) 토글
+- 현재 페이지 활성화 표시
+- 스크롤 효과
+
+#### 4. sde_design/skin2/layout/basic/layout.html (CSS/JS 포함)
+**추가된 내용**:
+```html
+<!--@css(/layout/basic/css/sidebar-header.css)-->
+<!--@js(/layout/basic/js/sidebar-header.js)-->
+```
+
+### 🔧 보수 및 추가 수정 방법
+
+#### 1. 헤더 너비 변경
+**파일**: `/sde_design/skin2/layout/basic/css/sidebar-header.css`
+
+```css
+/* 헤더 너비 변경 시 */
+#sidebar-header {
+    width: 320px; /* 원하는 너비로 변경 */
+}
+
+body {
+    margin-left: 320px; /* 동일한 값으로 변경 */
+}
+
+/* 태블릿 반응형도 함께 수정 */
+@media screen and (max-width: 1024px) {
+    #sidebar-header {
+        width: 300px;
+    }
+    body {
+        margin-left: 300px;
+    }
+}
+```
+
+#### 2. 메뉴 항목 추가/삭제
+**파일**: `/sde_design/skin2/layout/basic/header.html`
+
+**서비스 메뉴 추가**:
+```html
+<nav class="service-nav">
+    <ul>
+        <li><a href="/">Shop</a></li>
+        <li><a href="/member/login.html">Login</a></li>
+        <li><a href="/myshop/index.html">My</a></li>
+        <!-- 새 메뉴 추가 -->
+        <li><a href="/notice/list.html">Notice</a></li>
+    </ul>
+</nav>
+```
+
+**카테고리 메뉴 수정**:
+```html
+<nav class="category-nav">
+    <ul>
+        <li><a href="/product/list.html?module=product_listmain_1">New arrivals</a></li>
+        <li><a href="/product/list.html?best=true">Best</a></li>
+        <!-- 새 카테고리 추가 -->
+        <li><a href="/product/list.html?cate_no=5">Sale</a></li>
+    </ul>
+</nav>
+```
+
+#### 3. 로고 변경
+**파일**: `/sde_design/skin2/layout/basic/header.html`
+
+```html
+<div class="sidebar-logo">
+    <a href="/">
+        <!-- 로고 경로 변경 -->
+        <img src="/web/upload/logo/new-logo.png" alt="{$mall_name}" />
+    </a>
+</div>
+```
+
+#### 4. 모바일 메뉴 동작 커스터마이징
+**파일**: `/sde_design/skin2/layout/basic/js/sidebar-header.js`
+
+햄버거 버튼 스타일 변경, 애니메이션 효과 조정 가능
+
+#### 5. 기존 상단 헤더로 되돌리기
+1. **header.html**: base 폴더의 원본 파일로 복원
+2. **CSS 파일**: sidebar-header.css 제거
+3. **JS 파일**: sidebar-header.js 제거  
+4. **layout.html**: CSS/JS 포함 부분 제거
+
+### ⚠️ 주의사항 (3차 수정)
+
+1. **콘텐츠 여백**: 헤더 너비 변경 시 body의 margin-left 값도 반드시 함께 수정
+2. **모바일 테스트**: 768px 이하에서 햄버거 메뉴 정상 작동 확인 필요
+3. **기존 기능**: 로그인/로그아웃, 장바구니 등 CAFE24 기본 기능은 유지됨
+4. **SEO**: 헤더 구조 변경으로 인한 검색 엔진 최적화 영향 검토 필요
+5. **브라우저 호환성**: IE11 이하 브라우저에서는 일부 CSS 속성 지원 제한
+
+### 🎯 레이아웃 변경 효과
+- **사용성 개선**: 좌측 고정으로 네비게이션 접근성 향상
+- **공간 활용**: 상단 공간 확보로 콘텐츠 영역 확대
+- **모던 디자인**: 최신 웹 트렌드에 맞는 사이드바 네비게이션
+- **모바일 최적화**: 반응형 햄버거 메뉴로 모바일 UX 개선
+
+---
+
 ## 🔄 2차 수정: 헤더 네비게이션 영문화 (2025-09-02 17:30)
 
 ### 📋 2차 작업 개요
@@ -358,22 +552,32 @@ h1, h2, h3, h4, h5, h6 {
 ## ✅ 최종 업로드 체크리스트 (SKIN2 전용)
 
 ### 1차 수정 (폰트 변경):
-1. ✅ `sde_design/skin2/layout/basic/layout.html` (폰트 설정)
+1. ✅ `sde_design/skin2/layout/basic/layout.html` (폰트 설정 + 추가 CSS/JS 포함)
 2. ✅ `sde_design/skin2/layout/basic/css/font.css` (폰트 스타일)
 
 ### 2차 수정 (네비게이션 영문화):
-3. 🆕 `sde_design/skin2/layout/basic/header.html` (네비게이션 변경)
+3. 🔄 `sde_design/skin2/layout/basic/header.html` (네비게이션 변경 → 좌측 고정형으로 대폭 수정)
+
+### 3차 수정 (좌측 고정 헤더):
+4. 🆕 `sde_design/skin2/layout/basic/css/sidebar-header.css` (좌측 고정 헤더 스타일)
+5. 🆕 `sde_design/skin2/layout/basic/js/sidebar-header.js` (모바일 반응형 JavaScript)
 
 ### 📤 서버 업로드 순서 권장:
-1. **먼저**: layout.html + font.css (폰트 적용)
-2. **나중**: header.html (네비게이션 적용)
-3. **확인**: 각 단계별로 웹사이트에서 정상 작동 확인
+1. **1단계**: layout.html + font.css (폰트 적용)
+2. **2단계**: sidebar-header.css + sidebar-header.js (좌측 헤더 스타일 및 스크립트)
+3. **3단계**: header.html (좌측 고정 헤더 적용)
+4. **확인**: 각 단계별로 웹사이트에서 정상 작동 확인
 
 ### 🔍 업로드 후 확인사항:
 - [ ] 폰트가 Switzer + 나눔스퀘어로 적용되었는지 확인
-- [ ] 헤더 메뉴가 4개 영문 카테고리로 표시되는지 확인
-- [ ] 각 카테고리 링크 클릭 시 올바른 페이지로 이동하는지 확인
-- [ ] 모바일에서도 정상 작동하는지 확인
+- [ ] 헤더가 좌측에 고정되어 표시되는지 확인 (280px 너비)
+- [ ] 콘텐츠 영역이 좌측 여백(margin-left: 280px)을 가지고 있는지 확인
+- [ ] 스크롤 시 헤더는 고정되고 콘텐츠만 스크롤되는지 확인
+- [ ] 서비스 메뉴 4개(Shop, Login, My, Custom Care)가 상단에 표시되는지 확인
+- [ ] 카테고리 6개(New arrivals, Best, Outers, Tops, Bottoms, Accessories)가 중앙에 표시되는지 확인
+- [ ] 하단에 로고가 표시되고 클릭 시 메인페이지로 이동하는지 확인
+- [ ] 모바일(768px 이하)에서 햄버거 메뉴로 전환되는지 확인
+- [ ] 모바일에서 햄버거 버튼 클릭 시 사이드바가 슬라이드되는지 확인
 
 ## 🔧 추후 작업 권장사항
 
