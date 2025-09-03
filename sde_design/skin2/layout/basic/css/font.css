@@ -1,0 +1,92 @@
+/* 
+ * SKIN2 전용 폰트 스타일
+ * Switzer (영문) + 나눔스퀘어 (국문)
+ */
+
+/* 기본 body 폰트 설정 */
+body {
+    font-family: 'Switzer', 'Nanum Square', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* 제목 폰트 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-weight: 700;
+}
+
+/* 강조 텍스트 */
+strong, b {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-weight: 700;
+}
+
+/* 한글 우선 적용이 필요한 영역 */
+.korean-priority {
+    font-family: 'Nanum Square', 'Switzer', sans-serif;
+}
+
+/* 영문 우선 적용이 필요한 영역 */
+.english-priority {
+    font-family: 'Switzer', sans-serif;
+}
+
+/* 버튼 폰트 */
+button, .btn, input[type="button"], input[type="submit"] {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-weight: 500;
+}
+
+/* 입력 필드 폰트 */
+input, textarea, select {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+}
+
+/* 네비게이션 메뉴 */
+nav, .nav, .navigation {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+    font-weight: 500;
+}
+
+/* 제품 정보 텍스트 */
+.product-info, .prd-info {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+}
+
+/* 가격 표시 */
+.price, .amount {
+    font-family: 'Switzer', sans-serif;
+    font-weight: 600;
+}
+
+/* 테이블 폰트 */
+table {
+    font-family: 'Switzer', 'Nanum Square', sans-serif;
+}
+
+/* 폰트 weight 클래스 */
+.font-thin { font-weight: 100; }
+.font-extralight { font-weight: 200; }
+.font-light { font-weight: 300; }
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
+
+/* 반응형: 모바일에서 폰트 크기 조정 */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.6em; }
+    h3 { font-size: 1.4em; }
+    h4 { font-size: 1.2em; }
+    h5 { font-size: 1.1em; }
+    h6 { font-size: 1em; }
+}
