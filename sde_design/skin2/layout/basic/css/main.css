@@ -389,7 +389,6 @@
     /* 모든 콘텐츠 섹션 강제 표시 및 복구 */
     section,
     .section,
-    .hero-text-section,
     .main_product_slide,
     .main_product_list,
     .main_3dan_banner {
@@ -404,6 +403,19 @@
         z-index: 1 !important;
     }
     
+    /* hero-text-section 별도 처리 */
+    .hero-text-section {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+        position: relative !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 10px 10px 20px !important;
+        z-index: 1 !important;
+    }
+    
     /* 모바일에서 콘텐츠 영역 확실히 보이도록 */
     #contents,
     #container {
@@ -413,10 +425,8 @@
         position: relative !important;
         z-index: 1 !important;
     }
-    /* Hero Text 섹션 모바일 최적화 */
+    /* Hero Text 섹션 모바일 추가 설정 */
     .hero-text-section {
-        padding: 0 10px;
-        margin-bottom: 0;
         background: #ffffff;
     }
     
@@ -426,7 +436,7 @@
     }
     
     .hero-text-content p {
-        font-size: 9px;
+        font-size: 12px;
         line-height: 1.5;
         text-align: left;
         letter-spacing: -0.01em;
