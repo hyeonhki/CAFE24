@@ -37,12 +37,18 @@
         margin-left: 0 !important;
         margin-right: 0 !important;
         max-width: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
     .section.main_product_list {
         margin-left: 0 !important;
         margin-right: 0 !important;
         max-width: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
     
     .main_3dan_banner {
@@ -78,7 +84,16 @@
     margin-bottom: 10px;
 }
 
-/* Best 섹션 (슬라이드) - swiper 유지 */
+/* Best 섹션 (슬라이드) - 전체 너비 확장 */
+.main_product_slide {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 .main_product_slide .ec-base-product {
     width: 100% !important;
     max-width: 100% !important;
@@ -103,7 +118,16 @@
     margin-right: 20px !important;
 }
 
-/* New Arrivals 섹션 (그리드) - 기존 형태 유지 */
+/* New Arrivals 섹션 (그리드) - 전체 너비 확장 */
+.main_product_list {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 .main_product_list .ec-base-product,
 .main_product_list div[module*="product_listmain"] {
     width: 100% !important;
@@ -115,7 +139,46 @@
     max-width: 100% !important;
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 20px !important;
+    gap: 40px !important;
+}
+
+.main_product_list .prdList li {
+    flex: 0 0 calc(50% - 20px) !important;
+    width: calc(50% - 20px) !important;
+    max-width: calc(50% - 20px) !important;
+    margin: 0 !important;
+}
+
+.main_product_list .prdList li .thumbnail img,
+.main_product_list .prdList li .thumbnail picture img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1/1 !important;
+    object-fit: cover !important;
+}
+
+.main_product_list .prdList li .description {
+    padding: 20px 0 !important;
+    text-align: left !important;
+}
+
+.main_product_list .prdList li .description .name {
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    margin-bottom: 12px !important;
+    line-height: 1.4 !important;
+}
+
+.main_product_list .prdList li .description .price {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+}
+
+.main_product_list .prdList li .description .price .sale {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #000 !important;
 }
 
 /* Swiper 버튼 중복 문제 해결 */
