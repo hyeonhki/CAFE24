@@ -64,9 +64,7 @@
     margin-left: 0 !important;
 }
 
-.section.section.main_product_list {
-    margin-bottom : 0 !important;
-}
+/* 중복 선택자 제거 - 위의 @media 룰에서 처리됨 */
 
 /* 첫 번째 섹션 여백 조정 */
 .section:first-of-type {
@@ -113,9 +111,10 @@
 }
 
 .main_product_slide .prdList.swiper-wrapper li {
-    flex: 0 0 auto !important; /* 고정 크기 */
-    width: 300px !important; /* 각 상품의 고정 너비 */
+    flex: 0 0 auto !important;
+    width: 300px !important;
     margin-right: 20px !important;
+    /* swiper-slide 클래스가 자동으로 적용되도록 보장 */
 }
 
 /* New Arrivals 섹션 (그리드) - 전체 너비 확장 */

@@ -21,6 +21,46 @@
         });
     }
 
+    // Swiper 초기화
+    function initSwiper() {
+        const swiperContainer = document.querySelector('.swiper-container.special_slide');
+        if (!swiperContainer) return;
+        
+        // Swiper가 로드되었는지 확인
+        if (typeof Swiper === 'undefined') {
+            console.log('Swiper not loaded, trying again...');
+            setTimeout(initSwiper, 500);
+            return;
+        }
+        
+        const swiper = new Swiper(swiperContainer, {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            loop: false,
+            navigation: {
+                nextEl: '.swiper-button-next-special_slide',
+                prevEl: '.swiper-button-prev-special_slide',
+            },
+            lazy: true,
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 16
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                }
+            }
+        });
+        
+        console.log('Swiper initialized:', swiper);
+    }
+
     // 페이드인 애니메이션
     function initFadeInAnimation() {
         const sections = document.querySelectorAll('.section');
@@ -55,6 +95,7 @@
         }
         
         initScrollAnimation();
+        initSwiper();
         initFadeInAnimation();
     }
 
