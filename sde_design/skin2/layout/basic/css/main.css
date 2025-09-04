@@ -25,6 +25,38 @@
     margin: 0;
     letter-spacing: -0.02em;
 }
+/* section main - 1024px 이상에서 margin auto 제거 */
+@media screen and (min-width: 1024px) {
+    .section.main_image_text_gallery {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: none !important;
+    }
+
+    .section.main_product_slide {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: none !important;
+    }
+
+    .section.main_product_list {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: none !important;
+    }
+    
+    .main_3dan_banner {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: none !important;
+    }
+}
+
+/* 기본 section main 스타일 */
+.section.main_image_text_gallery {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
 
 /* 첫 번째 섹션 여백 조정 */
 .section:first-of-type {
