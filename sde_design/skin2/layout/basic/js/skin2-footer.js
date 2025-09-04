@@ -39,6 +39,7 @@
             document.documentElement.clientHeight
         );
         
+        // 모바일과 데스크톱 모두 동일한 스크롤 기반 로직
         // 스크롤이 맨 아래에서 100px 이내에 도달했는지 확인
         const isAtBottom = (scrollTop + windowHeight) >= (documentHeight - 100);
         
@@ -105,7 +106,7 @@
         setTimeout(checkScrollPosition, 100);
         
         // 디버깅을 위한 로그
-        console.log('통합 Footer 초기화 완료');
+        console.log('통합 Footer 초기화 완료 - 모바일/데스크톱 모두 스크롤 기반');
         console.log('footer:', footer);
         console.log('window.innerWidth:', window.innerWidth);
     }

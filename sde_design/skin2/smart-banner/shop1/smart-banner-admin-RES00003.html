@@ -58,6 +58,23 @@ div[app4you-smart-banner="smart-banner-admin-RES00003"] {
         height: auto !important;
     }
 }
+
+/* 모바일 최적화 */
+@media screen and (max-width: 768px) {
+    .xans-smart-banner-admin-RES00003,
+    [app4you-smart-banner="smart-banner-admin-RES00003"],
+    div[app4you-smart-banner="smart-banner-admin-RES00003"] {
+        margin: 0 20px !important;
+        max-width: calc(100% - 40px) !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+    }
+    
+    .xans-smart-banner-admin-RES00003 img,
+    [app4you-smart-banner="smart-banner-admin-RES00003"] img {
+        border-radius: 8px !important;
+    }
+}
 </style>
 <div app4you-smart-banner="smart-banner-admin-RES00003" app4you-smart-banner-html="true" class="xans-smart-banner-admin xans-smart-banner-admin-RES00003">
     <!-- SKIN2 전용 메인 배너 -->

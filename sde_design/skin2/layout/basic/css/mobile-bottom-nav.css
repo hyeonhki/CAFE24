@@ -1,0 +1,23 @@
+/* 
+ * SKIN2 - 불필요한 모바일 요소 완전 제거
+ * 하단 네비게이션은 HTML에서 제거됨
+ */
+
+/* 특정한 하단 네비게이션 요소만 숨김 */
+.bottom-nav,
+.bottom-nav.RMB.RTB,
+[ez-module="bottom-navigation"],
+.bottom-nav__tabBar,
+.bottom-nav__top,
+.bottom-nav__top a,
+span.xans-element-.xans-layout.xans-layout-mobileaction.RTMB,
+a[onclick*="history.go(-1)"],
+a[href="#wrap"][title*="화면 최상단"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+}

@@ -99,6 +99,31 @@
         initFadeInAnimation();
     }
 
+    // 모바일 메뉴 토글 함수들
+    window.toggleMobileMenu = function() {
+        const sidebar = document.getElementById('sidebar-header');
+        const overlay = document.querySelector('.mobile-overlay');
+        
+        sidebar.classList.toggle('mobile-open');
+        overlay.classList.toggle('active');
+        
+        // 스크롤 방지/해제
+        if (sidebar.classList.contains('mobile-open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    };
+    
+    window.closeMobileMenu = function() {
+        const sidebar = document.getElementById('sidebar-header');
+        const overlay = document.querySelector('.mobile-overlay');
+        
+        sidebar.classList.remove('mobile-open');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
     // 즉시 실행
     init();
 

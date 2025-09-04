@@ -1,4 +1,24 @@
 <!-- SKIN2 전용 좌측 고정 헤더 - 가로 나열 형태 -->
+
+<!-- 모바일 네비게이션 바 -->
+<div class="mobile-nav">
+	<a href="/" class="mobile-nav-logo">
+		<img src="/logo.png" alt="{$mall_name}">
+	</a>
+	<div class="mobile-nav-right">
+		<a href="/order/basket.html" class="mobile-cart-icon" module="Layout_orderBasketcount">
+			<img src="/SkinImg/skin2/bag.png" alt="장바구니">
+			<span class="mobile-cart-count {$basket_count_display|display}">
+				{$basket_count}
+			</span>
+		</a>
+		<button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+	</div>
+</div>
+
+<!-- 모바일 오버레이 -->
+<div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+
 <header id="sidebar-header">
 	<div class="sidebar-content">
 		<!-- Top Area - 서비스 관련 항목 (가로 나열) -->

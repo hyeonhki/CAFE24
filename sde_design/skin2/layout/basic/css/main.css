@@ -191,12 +191,53 @@
     right: 0 !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid #ddd !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    color: #333 !important;
 }
 
 .swiper-button-prev-special_slide {
     left: 0 !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid #ddd !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    color: #333 !important;
+}
+
+.swiper-button-next-special_slide:hover,
+.swiper-button-prev-special_slide:hover {
+    background: rgba(255, 255, 255, 1) !important;
+    border-color: #999 !important;
+}
+
+/* 버튼 내용을 위한 가상 요소 */
+.swiper-button-next-special_slide::after {
+    content: '›' !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+
+.swiper-button-prev-special_slide::after {
+    content: '‹' !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
 }
 
 /* 중복 버튼 숨김 */
@@ -297,23 +338,138 @@
 
 /* 반응형: 모바일 */
 @media screen and (max-width: 768px) {
+    /* 모바일에서 모든 레이아웃 리셋 */
+    * {
+        box-sizing: border-box !important;
+    }
+    
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+    
+    body {
+        padding-top: 60px !important; /* 모바일 네비만 */
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    #container {
+        display: block !important;
+        visibility: visible !important;
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    #contents {
+        display: block !important;
+        visibility: visible !important;
+        position: relative !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        min-width: auto !important;
+        max-width: 100% !important;
+    }
+    
+    /* 모든 콘텐츠 섹션 강제 표시 및 복구 */
+    section,
+    .section,
+    .hero-text-section,
+    .main_product_slide,
+    .main_product_list,
+    .main_3dan_banner {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+        position: relative !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        z-index: 1 !important;
+    }
+    
+    /* 모바일에서 콘텐츠 영역 확실히 보이도록 */
+    #contents,
+    #container {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    /* Hero Text 섹션 모바일 최적화 */
     .hero-text-section {
-        padding: 40px 0;
-        margin-bottom: 40px;
+        padding: 30px 0 20px 0;
+        margin-bottom: 20px;
+        background: #ffffff;
     }
     
     .hero-text-content {
-        padding: 0 16px;
+        padding: 0 20px;
+        max-width: 100%;
     }
     
     .hero-text-content p {
-        font-size: 15px;
-        line-height: 1.6;
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: center;
+        letter-spacing: -0.01em;
     }
     
+    /* 메인 타이틀 모바일 최적화 */
     .main_title_txt01 {
-        font-size: 24px;
-        margin-bottom: 24px;
+        font-size: 22px;
+        margin-bottom: 20px;
+        text-align: left;
+        padding-top: 0;
+    }
+    
+    /* Best 섹션 모바일 최적화 */
+    .main_product_slide {
+        padding: 0 20px;
+        margin-bottom: 40px;
+    }
+    
+    .main_product_slide .prdList.swiper-wrapper li {
+        width: 280px !important;
+        margin-right: 16px !important;
+    }
+    
+    /* New Arrivals 섹션 모바일 최적화 */
+    .main_product_list {
+        padding: 0 20px;
+        margin-bottom: 60px;
+    }
+    
+    .main_product_list .prdList {
+        gap: 20px !important;
+    }
+    
+    .main_product_list .prdList li {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Trending now 배너 모바일 최적화 */
+    .main_3dan_banner {
+        padding: 0 20px;
+        margin-top: 20px;
     }
     
     .main_3dan_banner ul {
