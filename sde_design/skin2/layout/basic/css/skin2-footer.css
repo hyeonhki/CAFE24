@@ -3,23 +3,26 @@
  * 스크롤 하단에만 표시되며 좌측 헤더 아래에도 배치
  */
 
-/* Footer 컨테이너 - 화면 하단 고정, 전체 너비 */
+/* Footer 컨테이너 - 화면 하단 고정, 전체 너비 (좌측 헤더 포함) */
 #skin2-footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100vw; /* 전체 화면 너비 */
+    width: 100vw; /* 전체 화면 너비 - 좌측 헤더 아래에도 표시 */
     height: 10vh; /* 화면 높이의 1/10 */
     background-color: #ffffff;
     border-top: 1px solid #000000; /* 얇은 검은색 선 */
-    z-index: 1500;
-    display: none; /* 기본적으로 숨김 */
+    z-index: 1500; /* 사이드바보다 높은 z-index */
+    display: none; /* 기본적으로 숨김 - JavaScript로 스크롤 시 표시 */
     font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    transform: translateY(100%); /* 초기에는 화면 밖으로 숨김 */
+    transition: transform 0.3s ease, display 0.3s ease;
 }
 
 /* Footer가 표시될 때 */
 #skin2-footer.show {
     display: block;
+    transform: translateY(0); /* 화면에 나타남 */
 }
 
 /* Footer 내용 */
@@ -63,10 +66,15 @@
     text-decoration: underline;
 }
 
-/* ID5AGIT 스타일 */
-.footer-line2 span {
+/* ID5AGIT 및 Site By 링크 스타일 */
+.footer-line2 .site-credit {
     font-weight: 500;
     color: #000;
+    text-decoration: none;
+}
+
+.footer-line2 .site-credit:hover {
+    text-decoration: underline;
 }
 
 /* 좌측 헤더가 있는 경우 메인 콘텐츠 영역에 하단 여백 추가 */

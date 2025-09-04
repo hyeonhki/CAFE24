@@ -6,22 +6,22 @@
 /* Hero 텍스트 섹션 */
 .hero-text-section {
     background: #ffffff; /* #f8f9fa에서 하얀색으로 변경 */
-    padding: 60px 0;
-    text-align: center;
+    padding: 30px 0px;
+    text-align: left;
 }
 
 .hero-text-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1024px;
+    margin: 0;
+    padding: 0px;
 }
 
 .hero-text-content p {
-    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    font-family: 'Roboto';
     font-size: 18px;
-    line-height: 1.8;
+    line-height: 1.3;
     color: #333;
-    font-weight: 400;
+    font-weight: 300;
     margin: 0;
     letter-spacing: -0.02em;
 }

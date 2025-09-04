@@ -2,6 +2,273 @@
 
 ---
 
+## 🔄 7차 수정: SKIN2 전면 리뉴얼 - 통합 Footer 및 헤더 최종 최적화 (2025-09-04)
+
+### 📋 7차 작업 개요
+- **수정일**: 2025년 9월 4일
+- **작업자**: Claude Code
+- **작업내용**: SKIN2 전면 리뉴얼 - 폰트 시스템 변경, 통합 Footer 구현, 헤더 최적화
+- **변경 범위**: 폰트, 레이아웃, Footer, 헤더 스타일 전면 개편
+
+### 🎯 7차 변경 목표
+- **폰트 시스템**: Switzer + 나눔스퀘어 → Roboto + Noto Sans KR로 재변경
+- **Footer 시스템**: 기존 복잡한 Footer → 통합 Footer 시스템 구축
+- **헤더 최적화**: 폰트 크기 통일, 간격 조정, 로고 위치 최적화
+- **반응형 완성**: 모든 기기에서 완벽한 사용자 경험 제공
+
+### 📂 7차 주요 변경 사항
+
+#### 1. 폰트 시스템 전면 개편
+
+**layout.html 폰트 링크 재변경**:
+```html
+<!-- 기존 Switzer + 나눔스퀘어 제거 -->
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Square:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/switzer@5.0.9/index.css" rel="stylesheet">
+
+<!-- 새로운 Roboto + Noto Sans KR 적용 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+```
+
+**font.css 전면 재작성**:
+```css
+/* @font-face 정의로 폰트 로딩 최적화 */
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+    font-display: swap;
+}
+
+/* 모든 요소에 새로운 폰트 적용 */
+* {
+    font-family: 'Roboto', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+```
+
+#### 2. 통합 Footer 시스템 구축
+
+**기존 문제점**:
+- 복잡한 분리형 Footer 구조
+- 사이드바와 콘텐츠 영역 Footer 경계선 불일치
+- 스크롤 하단에서만 표시되어야 하는데 항상 표시됨
+
+**새로운 통합 Footer**:
+```html
+<!-- footer.html -->
+<footer id="skin2-footer" class="skin2-footer-container">
+    <div class="footer-content">
+        <div class="footer-line1">
+            070-000-0000　Mon-Fri : 11am - 5pm　Weekend Holiday Off　/ 
+            <a href="/member/mall_agreement.html">Agreement</a> 
+            <a href="/shopinfo/guide.html">Guide</a> 
+            <a href="/member/privacy.html">Privacy</a> 
+            <a href="/shopinfo/company.html">사업자정보확인</a>
+        </div>
+        <div class="footer-line2">
+            Agit Store　CEO : Honggildong　Address : 1f, 65-55, Hannam-Dero 10-Gil Yongsan-Gu, Seoul　
+            Business license : 000-00-000000　Mall-order license : 0000-서울서초-0000　
+            Email : test@naver.com　Site By <span>ID5AGIT</span>
+        </div>
+    </div>
+</footer>
+```
+
+**Footer CSS 특징**:
+```css
+/* 전체 화면 너비 하단 고정 */
+#skin2-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
+    background-color: #ffffff;
+    border-top: 1px solid #000000;
+    z-index: 1500;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+}
+
+/* 매우 작은 폰트 크기 */
+.footer-line1, .footer-line2 {
+    font-size: 9px;
+    line-height: 1.2;
+    font-weight: 300;
+}
+```
+
+**Footer JavaScript 핵심 로직**:
+```javascript
+function checkScrollPosition() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = Math.max(document.documentElement.scrollHeight);
+    
+    const isAtBottom = (scrollTop + windowHeight) >= (documentHeight - 100);
+    
+    if (isAtBottom && !isFooterVisible) {
+        showFooter();
+    } else if (!isAtBottom && isFooterVisible) {
+        hideFooter();
+    }
+}
+```
+
+#### 3. 헤더 최종 최적화
+
+**폰트 크기 통일**:
+```css
+/* 서비스 네비게이션 폰트 크기 증대 */
+.service-nav a {
+    font-size: 22px; /* 18px → 22px (카테고리와 동일) */
+    font-weight: 300; /* 가벼운 폰트로 고급스러운 느낌 */
+}
+
+/* 카테고리 네비게이션 폰트 경량화 */
+.category-nav a {
+    font-weight: 300; /* 400 → 300 */
+}
+```
+
+**간격 최적화**:
+```css
+/* 카테고리 줄바꿈 구조 */
+.category-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* 상하 간격 축소 */
+}
+
+.category-group-1, .category-group-2 {
+    display: flex;
+    gap: 16px; /* 좌우 간격 축소 */
+}
+
+/* 링크 패딩 최적화 */
+.category-nav a {
+    padding: 8px 12px; /* 12px 16px → 8px 12px */
+}
+```
+
+**로고 위치 최적화**:
+```css
+.sidebar-logo-area {
+    margin-top: auto;
+    padding-bottom: 80px; /* 하단 여백 증대 */
+}
+```
+
+#### 4. Hero 섹션 배경색 통일
+
+**main.css 수정**:
+```css
+.hero-text-section {
+    background: #ffffff; /* #f8f9fa → #ffffff (헤더와 동일) */
+    padding: 60px 0;
+    text-align: center;
+}
+```
+
+### 🎨 시각적 개선 사항
+
+#### 1. 통합된 디자인 시스템
+- **폰트**: Roboto(영문) + Noto Sans KR(한글)로 통일
+- **배경색**: 헤더와 Hero 섹션 모두 하얀색으로 통일
+- **Footer**: 전체 화면을 아우르는 통합 Footer로 깔끔한 마무리
+
+#### 2. 헤더 최적화
+- **폰트 크기**: 서비스와 카테고리 네비게이션 크기 통일 (22px)
+- **폰트 Weight**: 모든 텍스트를 300으로 경량화하여 고급스러운 느낌
+- **간격**: 카테고리 간격을 줄여서 더 조밀하고 깔끔한 레이아웃
+- **로고**: 더 하단으로 배치하여 안정적인 구조
+
+#### 3. Footer 시스템
+- **단순화**: 복잡한 분리형 → 단일 통합형으로 변경
+- **일관성**: 헤더와 콘텐츠를 모두 아우르는 경계선
+- **효율성**: JavaScript 로직 최적화로 성능 향상
+
+### 📐 반응형 최적화
+
+**데스크톱 (1201px 이상)**:
+- 헤더: 450px 너비
+- Footer: 전체 화면 너비 (100vw)
+- 폰트: 서비스/카테고리 모두 22px
+
+**태블릿 (769px - 1200px)**:
+- 헤더: 380px 너비
+- Footer: 전체 화면 너비
+- 폰트: 서비스/카테고리 모두 20px
+
+**모바일 (768px 이하)**:
+- 헤더: 320px 너비 (슬라이드)
+- Footer: 높이 12vh로 증가
+- 폰트: 줄바꿈 허용
+
+### 🔧 성능 최적화
+
+#### 1. 폰트 로딩 최적화
+```css
+@font-face {
+    font-display: swap; /* 폰트 로딩 중 fallback 폰트 표시 */
+}
+```
+
+#### 2. JavaScript 최적화
+```javascript
+// 디바운싱된 스크롤 이벤트
+function onScroll() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(checkScrollPosition, 50);
+}
+
+// passive 이벤트 리스너
+window.addEventListener('scroll', onScroll, { passive: true });
+```
+
+#### 3. CSS 최적화
+- 불필요한 그림자 효과 제거
+- z-index 계층 구조 정리
+- transition 애니메이션 최적화
+
+### 📝 파일별 변경사항 요약
+
+#### 새로 생성된 파일:
+1. **skin2-footer.css** - 통합 Footer 스타일
+2. **skin2-footer.js** - Footer 스크롤 연동 JavaScript
+
+#### 대폭 수정된 파일:
+3. **layout.html** - 폰트 링크 변경, CSS/JS 포함
+4. **font.css** - 전면 재작성 (Roboto + Noto Sans KR)
+5. **sidebar-header.css** - 폰트 크기, 간격, 로고 위치 최적화
+6. **header.html** - 카테고리 줄바꿈 구조 적용
+7. **main.css** - Hero 섹션 배경색 변경
+8. **footer.html** - 기존 Footer 대체
+
+### 🚀 7차 수정의 핵심 성과
+
+#### 1. 사용자 경험 대폭 개선
+- **직관적 네비게이션**: 폰트 크기 통일로 일관된 사용자 인터페이스
+- **깔끔한 Footer**: 스크롤 하단에서만 나타나는 통합 Footer
+- **고급스러운 디자인**: 가벼운 폰트 Weight로 세련된 느낌
+
+#### 2. 기술적 완성도 향상
+- **통합 시스템**: 분산된 Footer를 하나로 통합하여 유지보수성 향상
+- **성능 최적화**: 디바운싱, passive 이벤트로 성능 개선
+- **반응형 완성**: 모든 기기에서 완벽한 레이아웃 구현
+
+#### 3. 브랜드 일관성 확립
+- **폰트 통일**: Roboto + Noto Sans KR로 모든 텍스트 일관성 확보
+- **색상 통일**: 헤더와 Hero 섹션 배경색 통일
+- **레이아웃 조화**: 헤더, 콘텐츠, Footer의 완벽한 조화
+
+---
+
 ## 🔄 6차 수정: 메인 페이지 최적화 및 콘텐츠 정리 (2025-09-03)
 
 ### 📋 6차 작업 개요

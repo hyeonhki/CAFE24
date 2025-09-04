@@ -54,16 +54,11 @@
         if (!footer) return;
         
         isFooterVisible = true;
-        footer.classList.add('show');
+        footer.style.display = 'block';
         
-        // 통합 Footer 사용으로 사이드바 Footer 관련 코드 제거
-        
-        // 애니메이션을 위한 작은 지연
+        // CSS transform과 transition을 사용한 부드러운 애니메이션
         setTimeout(() => {
-            footer.style.transition = 'opacity 0.3s ease-in-out';
-            footer.style.opacity = '1';
-            
-            // 사이드바 Footer 애니메이션은 CSS transition으로 처리됨
+            footer.classList.add('show');
         }, 10);
     }
     
@@ -72,12 +67,11 @@
         if (!footer) return;
         
         isFooterVisible = false;
-        footer.style.opacity = '0';
+        footer.classList.remove('show');
         
-        // 통합 Footer 사용으로 사이드바 Footer 관련 코드 제거
-        
+        // 애니메이션 완료 후 display none
         setTimeout(() => {
-            footer.classList.remove('show');
+            footer.style.display = 'none';
         }, 300);
     }
     
