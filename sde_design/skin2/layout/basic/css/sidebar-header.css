@@ -27,7 +27,7 @@
 
 /* 서비스 네비게이션 영역 (상단) - 가로 나열 형태 */
 .sidebar-top-area {
-    padding: 40px 30px 30px;
+    padding: 30px;
 }
 
 .service-nav {
@@ -125,7 +125,7 @@
 /* 카테고리 네비게이션 영역 (중앙) - 가로 나열 형태 */
 .sidebar-category-area {
     flex: 1;
-    padding: 40px 30px;
+    padding: 10px 30px;
 }
 
 .category-nav {

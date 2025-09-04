@@ -6,7 +6,7 @@
 /* Hero 텍스트 섹션 */
 .hero-text-section {
     background: #ffffff; /* #f8f9fa에서 하얀색으로 변경 */
-    padding: 40px 10px 20px 0px;
+    padding: 30px 10px 20px 0px;
     text-align: left;
 }
 
@@ -58,6 +58,10 @@
     margin-left: 0 !important;
 }
 
+.section.section.main_product_list {
+    margin-bottom : 0 !important;
+}
+
 /* 첫 번째 섹션 여백 조정 */
 .section:first-of-type {
     margin-top: 0;
@@ -69,8 +73,77 @@
     font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     font-size: 32px;
     font-weight: 600;
+    padding-top: 10px;
     color: #000;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+}
+
+/* Best 섹션 (슬라이드) - swiper 유지 */
+.main_product_slide .ec-base-product {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+.main_product_slide .swiper-container {
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.main_product_slide .prdList.swiper-wrapper {
+    display: flex !important;
+    flex-wrap: nowrap !important; /* 슬라이드이므로 wrap 금지 */
+    width: auto !important;
+    transition: transform 0.3s ease !important;
+}
+
+.main_product_slide .prdList.swiper-wrapper li {
+    flex: 0 0 auto !important; /* 고정 크기 */
+    width: 300px !important; /* 각 상품의 고정 너비 */
+    margin-right: 20px !important;
+}
+
+/* New Arrivals 섹션 (그리드) - 기존 형태 유지 */
+.main_product_list .ec-base-product,
+.main_product_list div[module*="product_listmain"] {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.main_product_list .prdList {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+}
+
+/* Swiper 버튼 중복 문제 해결 */
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute !important;
+    z-index: 10 !important;
+}
+
+.swiper-button-next-special_slide {
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.swiper-button-prev-special_slide {
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+/* 중복 버튼 숨김 */
+.swiper-button-next:not(.swiper-button-next-special_slide) {
+    display: none !important;
+}
+
+.swiper-button-prev:not(.swiper-button-prev-special_slide) {
+    display: none !important;
 }
 
 /* Trending now 이미지 갤러리 1행 3개 정렬 */
