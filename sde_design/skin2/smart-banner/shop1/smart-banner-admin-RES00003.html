@@ -1,34 +1,67 @@
 <style>
-/* 스마트 배너 전체 컨테이너 override */
+/* 스마트 배너 - 1024×768px 원본 크기에 최적화 */
 .xans-smart-banner-admin-RES00003,
-[app4you-smart-banner="smart-banner-admin-RES00003"] {
-    height: auto !important;
-    min-height: 702px !important;
+[app4you-smart-banner="smart-banner-admin-RES00003"],
+div[app4you-smart-banner="smart-banner-admin-RES00003"] {
+    width: 1024px !important;
+    height: 500px !important;
+    max-width: 100% !important;
     max-height: none !important;
     overflow: visible !important;
-    line-height: 0 !important;
+    display: block !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin: 0 auto !important; /* 중앙 정렬 */
+    box-sizing: border-box !important;
 }
 
 .xans-smart-banner-admin-RES00003 a,
 [app4you-smart-banner="smart-banner-admin-RES00003"] a {
-    height: auto !important;
+    width: 1024px !important;
+    height: 500px !important;
     display: block !important;
-    line-height: 0 !important;
+    overflow: visible !important;
+    position: relative !important;
 }
 
 .xans-smart-banner-admin-RES00003 img,
 [app4you-smart-banner="smart-banner-admin-RES00003"] img {
-    width: 100% !important;
-    height: 702px !important;
+    width: 1024px !important;
+    height: 500px !important;
+    max-width: 100% !important;
     max-height: none !important;
-    object-fit: scale-down !important;
-    object-position: center !important;
     display: block !important;
+    object-fit: none !important;
+    object-position: center !important;
+    vertical-align: top !important;
+}
+
+/* 반응형 - 작은 화면에서는 비율 유지하며 축소 */
+@media screen and (max-width: 1200px) {
+    .xans-smart-banner-admin-RES00003,
+    [app4you-smart-banner="smart-banner-admin-RES00003"],
+    div[app4you-smart-banner="smart-banner-admin-RES00003"] {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 1024px !important;
+    }
+    
+    .xans-smart-banner-admin-RES00003 a,
+    [app4you-smart-banner="smart-banner-admin-RES00003"] a {
+        width: 100% !important;
+        height: auto !important;
+    }
+    
+    .xans-smart-banner-admin-RES00003 img,
+    [app4you-smart-banner="smart-banner-admin-RES00003"] img {
+        width: 100% !important;
+        height: auto !important;
+    }
 }
 </style>
 <div app4you-smart-banner="smart-banner-admin-RES00003" app4you-smart-banner-html="true" class="xans-smart-banner-admin xans-smart-banner-admin-RES00003">
     <!-- SKIN2 전용 메인 배너 -->
     <a href="javascript:void(0);" style="cursor:default;">
-        <img src="/skin-skin2/smart-banner/shop1/카피라이팅5.png" alt="배너 이미지">
+        <img src="/skin-skin2/smart-banner/shop1/banner.png" alt="배너 이미지">
     </a>
 </div>

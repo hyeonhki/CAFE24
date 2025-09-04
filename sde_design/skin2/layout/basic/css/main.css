@@ -6,7 +6,7 @@
 /* Hero 텍스트 섹션 */
 .hero-text-section {
     background: #ffffff; /* #f8f9fa에서 하얀색으로 변경 */
-    padding: 40px 10px;
+    padding: 40px 10px 20px 0px;
     text-align: left;
 }
 
@@ -109,8 +109,10 @@
 .main_3dan_banner ul li img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    max-width: 100%;
     border-radius: 8px;
+    display: block;
+    /* object-fit 제거 - 이미지 원본 비율 유지 */
 }
 
 /* 이미지 텍스트 오버레이 */
