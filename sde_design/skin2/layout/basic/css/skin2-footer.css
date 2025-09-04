@@ -9,7 +9,7 @@
     bottom: 0;
     left: 0;
     width: 100vw; /* 전체 화면 너비 - 좌측 헤더 아래에도 표시 */
-    height: 10vh; /* 화면 높이의 1/10 */
+    height: 7vh; 
     background-color: #ffffff;
     border-top: 1px solid #000000; /* 얇은 검은색 선 */
     z-index: 1500; /* 사이드바보다 높은 z-index */

@@ -13,6 +13,11 @@
 					<a href="{$action_logout}">Logout</a>
 					<a href="/myshop/index.html">My</a>
 				</span>
+				<a href="/order/basket.html" class="bag-link" module="Layout_orderBasketcount">
+					Bag : <span class="bag-count {$basket_count_display|display} {$basket_count_display_class}">
+						<span class="{$basket_count_class}">{$basket_count}</span>
+					</span>
+				</a>
 				<div class="custom-care-dropdown">
 					<a href="#none" class="dropdown-toggle">Custom Care</a>
 					<ul module="Layout_BoardInfo" class="dropdown-menu">
@@ -31,9 +36,9 @@
 					<a href="/product/list.html?best=true">Best</a>
 				</div>
 				<div class="category-group-2">
-					<a href="/product/list.html?cate_no=1">Outers</a>
+					<!-- <a href="/product/list.html?cate_no=1">Outers</a> -->
 					<a href="/product/list.html?cate_no=2">Tops</a>
-					<a href="/product/list.html?cate_no=3">Bottoms</a>
+					<!-- <a href="/product/list.html?cate_no=3">Bottoms</a> -->
 					<a href="/product/list.html?cate_no=4">Accessories</a>
 				</div>
 			</nav>

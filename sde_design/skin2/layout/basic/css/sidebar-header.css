@@ -33,7 +33,7 @@
 .service-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 0px 20px;
     align-items: center;
 }
 
@@ -56,6 +56,25 @@
     color: #000;
     font-weight: 400; /* 600에서 400으로 더 가볍게 */
 }
+
+/* Shop 링크 기본 상태 강제 설정 - font-weight 문제 해결 */
+.service-nav a[href="/"] {
+    color: #333 !important;
+    font-weight: 300 !important;
+    font-style: normal !important;
+}
+
+.service-nav a[href="/"]:hover {
+    color: #000 !important;
+    font-weight: 400 !important;
+}
+
+/* 모든 service-nav 링크의 기본 font-weight 강제 적용 */
+.service-nav a:not(:hover) {
+    font-weight: 300 !important;
+}
+
+/* 장바구니 링크 기본 스타일 */
 
 /* Custom Care 드롭다운 메뉴 */
 .custom-care-dropdown {
@@ -144,8 +163,19 @@
 
 /* New arrivals, Best 특별 스타일 */
 .category-group-1 a {
-    font-weight: 300; /* New arrivals, Best에 특별 스타일 적용 */
+    font-weight: 300 !important; /* New arrivals, Best에 특별 스타일 적용 */
     color: #000;
+}
+
+/* 모든 category-nav 링크의 기본 font-weight 강제 적용 */
+.category-nav a:not(:hover) {
+    font-weight: 300 !important;
+}
+
+/* category-group-2의 기본 상태도 강제 설정 */
+.category-group-2 a:not(:hover) {
+    font-weight: 300 !important;
+    color: #333 !important;
 }
 
 /* 로고 영역 (하단) */
