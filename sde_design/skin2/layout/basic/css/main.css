@@ -24,6 +24,7 @@
     font-weight: 300;
     margin: 0;
     letter-spacing: -0.02em;
+    white-space: normal;
 }
 /* section main - 1024px 이상에서 margin auto 제거 */
 @media screen and (min-width: 1024px) {
@@ -414,20 +415,20 @@
     }
     /* Hero Text 섹션 모바일 최적화 */
     .hero-text-section {
-        padding: 30px 0 20px 0;
-        margin-bottom: 20px;
+        padding: 0 10px;
+        margin-bottom: 0;
         background: #ffffff;
     }
     
     .hero-text-content {
-        padding: 0 20px;
+        padding: 0;
         max-width: 100%;
     }
     
     .hero-text-content p {
-        font-size: 14px;
+        font-size: 9px;
         line-height: 1.5;
-        text-align: center;
+        text-align: left;
         letter-spacing: -0.01em;
     }
     
