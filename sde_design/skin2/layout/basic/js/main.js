@@ -6,19 +6,11 @@
 (function() {
     'use strict';
 
-    // 스크롤 애니메이션
+    // 스크롤 애니메이션 제거됨
     function initScrollAnimation() {
-        const heroSection = document.querySelector('.hero-text-section');
-        if (!heroSection) return;
-
-        window.addEventListener('scroll', function() {
-            const scrolled = window.scrollY;
-            const rate = scrolled * -0.5;
-            
-            if (scrolled > 0 && scrolled < heroSection.offsetHeight) {
-                heroSection.style.transform = `translateY(${rate}px)`;
-            }
-        });
+        // Hero section 스크롤 애니메이션 제거
+        // 위치 변경 오류 방지를 위해 제거됨
+        return;
     }
 
     // Swiper 초기화

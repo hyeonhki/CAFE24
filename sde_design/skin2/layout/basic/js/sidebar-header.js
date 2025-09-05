@@ -146,4 +146,35 @@
     // 즉시 실행
     init();
 
+    // 전역 함수로 노출 (HTML onclick에서 사용)
+    window.toggleMobileMenu = function() {
+        const sidebar = document.getElementById('sidebar-header');
+        const overlay = document.querySelector('.mobile-overlay');
+        
+        if (!sidebar || !overlay) return;
+        
+        const isOpen = sidebar.classList.contains('mobile-open');
+        
+        if (isOpen) {
+            sidebar.classList.remove('mobile-open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        } else {
+            sidebar.classList.add('mobile-open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeMobileMenu = function() {
+        const sidebar = document.getElementById('sidebar-header');
+        const overlay = document.querySelector('.mobile-overlay');
+        
+        if (!sidebar || !overlay) return;
+        
+        sidebar.classList.remove('mobile-open');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
 })();
