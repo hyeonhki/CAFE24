@@ -1,85 +1,32 @@
 <!--@layout(/layout/basic/layout.html)-->
 <!--@js(/js/module/product/menucategory.js)-->
 <!--@css(/css/module/product/menupackage.css)-->
-<div class="path maxwidth1680 section" module="product_headcategory" data-ez-module="product-head-breadcrumb/1">
-	<span>현재 위치</span>
-	<ol>
-		<li><a href="/">홈</a></li>
-		<li class="{$disp_cate_1|display}"><a href="{$link_product_list_1}">{$name_1}</a></li>
-		<li class="{$disp_cate_2|display}"><a href="{$link_product_list_2}">{$name_2}</a></li>
-		<li class="{$disp_cate_3|display}"><a href="{$link_product_list_3}">{$name_3}</a></li>
-		<li class="{$disp_cate_4|display}"><strong><a href="{$link_product_list_4}">{$name_4}</a></strong></li>
-	</ol>
-</div>
-<div class="section maxwidth1680 titleArea" module="product_headcategory" data-ez-module="product-list-head-title/1">
-    <h2>{$title_text_or_image}</h2>
-    <span class="likeButton {$disp_likecate_class}"><button type="button">{$disp_likecate_icon}<strong>{$disp_likecate_count}</strong></button></span>
-</div>
-<div class="section ec-base-tab typeMenu" data-ez-module="product-list-subcategory/1">
-	<div class="display_tablet_only">
-		<ul class="menuCategory menu">
-			<li module="product_displaysubcategory" style="display:{$display};" class="{$selected}">
-				<a href="{$link_product_list_sub}" class="button">{$category_name}
-					<span class="count {$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a>
-				<ul module="product_children">
-					<li class="{$selected}">
-						<a href="{$link_product_list_sub}">{$category_name}
-							<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a>
-						<div class="button">
-							{$children_icon}
-							<ul module="product_children" class="subCategory">
-								<li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name}<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a></li>
-								<li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name}<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="{$selected}">
-						<a href="{$link_product_list_sub}">{$category_name}
-							<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a>
-						<div class="button">
-							{$children_icon}
-							<ul module="product_children" class="subCategory">
-								<li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name}<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a></li>
-								<li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name}<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a></li>
-							</ul>
-						</div>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-	<div class="display_pc_only">
-		<ul class="menuCategory menu">
-			<li module="product_displaycategory" style="display:{$display};" class="{$selected}">
-				<a href="{$link_product_list_sub}" class="button">{$category_name}
-					<span class="count {$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a>
-				<ul module="product_children">
-					<li class="{$selected}">
-						<a href="{$link_product_list_sub}">{$category_name}
-							<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a>
-						<div class="button">
-							{$children_icon}
-							<ul module="product_children" class="subCategory">
-								<li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name}<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a></li>
-								<li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name}<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="{$selected}">
-						<a href="{$link_product_list_sub}">{$category_name}
-							<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a>
-						<div class="button">
-							{$children_icon}
-							<ul module="product_children" class="subCategory">
-								<li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name}<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a></li>
-								<li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name}<span class="{$product_count_display|display}">({$product_count})</span></a><a href="#none" class="iconWrap"></a></li>
-							</ul>
-						</div>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
+<!--@css(/layout/basic/css/product-list.css)-->
+<!-- 브레드크럼과 중분류 메뉴 제거됨 -->
+<div class="section product-list-title-section">
+    <h2 id="category-title">
+        <script>
+            // URL 파라미터에 따라 타이틀 설정
+            const urlParams = new URLSearchParams(window.location.search);
+            const cateNo = urlParams.get('cate_no');
+            const isBest = urlParams.get('best');
+            const isNewArrivals = urlParams.get('module');
+            
+            let title = 'Products'; // 기본값
+            
+            if (isBest) {
+                title = 'Best';
+            } else if (isNewArrivals && isNewArrivals.includes('product_listmain')) {
+                title = 'New Arrivals';
+            } else if (cateNo === '42') {
+                title = 'Tops';
+            } else if (cateNo === '47') {
+                title = 'Accessories';
+            }
+            
+            document.getElementById('category-title').textContent = title;
+        </script>
+    </h2>
 </div>
 <div module="product_headcategory" data-ez-module="product-list-categoryimage/1" class="section product_top_image">{$top_image1_tag}{$top_image2_tag}{$top_image3_tag}</div>
 <div class="section maxwidth1680" data-ez-module="product-listrecommend/1" data-ez-layout="grid4">

@@ -1,24 +1,27 @@
 <!--@layout(/layout/basic/layout.html)-->
+<!--@css(/layout/basic/css/product-list.css)-->
 <div module="Project_Package" class="section">
     <!--@css(/css/module/product/project_package.css)-->
-    <div class="path" module="project_head">
-        <span>현재 위치</span>
-        <ol>
-            <li><a href="/">홈</a></li>
-            <li title="현재 위치">기획전</li>
-        </ol>
-    </div>
-
-    <div class="section title" module="product_headcategory">
-        <h2>{$title_text_or_image}</h2>
-    </div>
-
-    <div class="section ec-base-tab typeMenu">
-        <ul class="menuCategory menu">
-            <li module="product_projectcategory" style="display:{$display};">
-                <a href="#{$cate_id}" class="button">{$category_name} <span class="count {$product_count_display|display}">({$product_count})</span></a>
-            </li>
-        </ul>
+    
+    <!-- 브레드크럼과 중분류 메뉴 제거됨 -->
+    <div class="section product-list-title-section">
+        <h2 id="category-title">
+            <script>
+                // URL 파라미터에 따라 타이틀 설정
+                const urlParams = new URLSearchParams(window.location.search);
+                const cateNo = urlParams.get('cate_no');
+                
+                let title = 'Project'; // 기본값
+                
+                if (cateNo === '56') {
+                    title = 'Best';
+                } else if (cateNo === '57') {
+                    title = 'New Arrivals';
+                }
+                
+                document.getElementById('category-title').textContent = title;
+            </script>
+        </h2>
     </div>
 
 	<div module="product_headcategory" class="product_top_image">{$top_image1_tag}{$top_image2_tag}{$top_image3_tag}</div>
