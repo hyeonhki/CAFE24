@@ -1,93 +1,57 @@
 <!--@layout(/layout/basic/layout.html)-->
 <!--@css(/layout/basic/css/product-list.css)-->
-<div module="Project_Package" class="section">
-    <!--@css(/css/module/product/project_package.css)-->
-    
-    <!-- 브레드크럼과 중분류 메뉴 제거됨 -->
-    <div class="section product-list-title-section">
-        <h2 id="category-title">
-            <script>
-                // URL 파라미터에 따라 타이틀 설정
-                const urlParams = new URLSearchParams(window.location.search);
-                const cateNo = urlParams.get('cate_no');
-                
-                let title = 'Project'; // 기본값
-                
-                if (cateNo === '56') {
-                    title = 'Best';
-                } else if (cateNo === '57') {
-                    title = 'New Arrivals';
-                }
-                
-                document.getElementById('category-title').textContent = title;
-            </script>
-        </h2>
-    </div>
 
-	<div module="product_headcategory" class="product_top_image">{$top_image1_tag}{$top_image2_tag}{$top_image3_tag}</div>
+<!-- 타이틀 섹션 -->
+<div class="section product-list-title-section">
+    <h2 id="category-title">
+        <script>
+            // URL 파라미터에 따라 타이틀 설정
+            const urlParams = new URLSearchParams(window.location.search);
+            const cateNo = urlParams.get('cate_no');
+            
+            let title = 'Products'; // 기본값
+            
+            if (cateNo === '56') {
+                title = 'Best';
+            } else if (cateNo === '57') {
+                title = 'New Arrivals';
+            }
+            
+            document.getElementById('category-title').textContent = title;
+        </script>
+    </h2>
+</div>
 
-    <div module="project_list">
-        <!--
-            $basket_result = /product/add_basket.html
-            $basket_option = /product/basket_option.html
-        -->
-        <h3><span id="{$cate_id}"></span>{$category_name}</h3>
+<!-- 카테고리별 상품 리스트 모듈 -->
+<div class="section normalpackage_box maxwidth1680" data-ez-module="product-list/1" data-ez-layout="grid4">
+	<ez-prop data-version="1.0.0">
+		<ez-var data-prop="layout" data-namespace="ez.module.product-list.layout" data-type="array">
+			<ez-item data-id="grid3" data-name="일반3단형(PC 3열/MOBILE 1열)"></ez-item>
+			<ez-item data-id="grid4" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5" data-name="일반5단형(PC 5열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid3 list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 1열)"></ez-item>
+			<ez-item data-id="grid4 list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5 list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 2열)"></ez-item>
+		</ez-var>
+	</ez-prop>
 
-        <div module="project_productlist" class="ec-base-product">
-            <ul class="prdList grid4">
-				<li id="anchorBoxId_{$product_no}">
-					<div class="prdList__item">
-						<div class="thumbnail">
-							<a href="{$link_product_detail}"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" loading="lazy"><span module="product_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span></a>
-							<div class="likeButton {$disp_likeprd_class}"><button type="button">{$disp_likeprd_icon} <strong>{$disp_likeprd_count}</strong></button></div>
-							<div class="badge"><span></span></div>
-							<div class="icon__box">
-								<span class="wish">{$list_wish_icon}WISH</span>
-								<span class="cart">{$basket_icon}ADD</span>
-								<span class="option">{$option_preview_icon}OPTION</span>
-							</div>
-							<div class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons}</div>
-						</div>
-						<div class="description" ec-data-custom="{$product_custom}" ec-data-price="{$product_price}">
-							<div class="name"><a href="{$link_product_detail}" class="{$product_name_display|display}"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</a></div>
-							<ul module="project_ListItem" class="spec">
-								<li class="{$item_display|display}">
-									<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
-								</li>
-								<li class="{$item_display|display}">
-									<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
-								</li>
-							</ul>
-						</div>
-					</div>
-				</li>
-				<li id="anchorBoxId_{$product_no}">
-					<div class="prdList__item">
-						<div class="thumbnail">
-							<a href="{$link_product_detail}"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" loading="lazy"><span module="product_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span></a>
-							<div class="likeButton {$disp_likeprd_class}"><button type="button">{$disp_likeprd_icon} <strong>{$disp_likeprd_count}</strong></button></div>
-							<div class="badge"><span></span></div>
-							<div class="icon__box">
-								<span class="wish">{$list_wish_icon}WISH</span>
-								<span class="cart">{$basket_icon}ADD</span>
-								<span class="option">{$option_preview_icon}OPTION</span>
-							</div>
-							<div class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons}</div>
-						</div>
-						<div class="description" ec-data-custom="{$product_custom}" ec-data-price="{$product_price}">
-							<div class="name"><a href="{$link_product_detail}" class="{$product_name_display|display}"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</a></div>
-							<ul module="project_ListItem" class="spec">
-								<li class="{$item_display|display}">
-									<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
-								</li>
-								<li class="{$item_display|display}">
-									<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
-								</li>
-							</ul>
-						</div>
-					</div>
-				</li>
-            </ul>
-        </div>
-    </div>
+	<div data-ez-holder="product_listmain">
+		<div module="product_listmain_1" class="ec-base-product">
+			<!--
+				$count = 20
+				$basket_result = /product/add_basket.html
+				$basket_option = /product/basket_option.html
+				$moreview = yes
+				$cache = yes
+			-->
+			<ul class="prdList grid4" data-ez-role="layout">
+			<!--@import(/product/list_product.html)-->
+			</ul>
+		</div>
+		<div module="product_listmore_1" class="more">
+			<a href="#none" onclick="{$more_action}" class="btnMore">
+				MORE
+			</a>
+		</div>
+	</div>
 </div>

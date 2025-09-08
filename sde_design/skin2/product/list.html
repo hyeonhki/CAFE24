@@ -10,14 +10,12 @@
             // URL 파라미터에 따라 타이틀 설정
             const urlParams = new URLSearchParams(window.location.search);
             const cateNo = urlParams.get('cate_no');
-            const isBest = urlParams.get('best');
-            const isNewArrivals = urlParams.get('module');
             
             let title = 'Products'; // 기본값
             
-            if (isBest) {
+            if (cateNo === '56') {
                 title = 'Best';
-            } else if (isNewArrivals && isNewArrivals.includes('product_listmain')) {
+            } else if (cateNo === '57') {
                 title = 'New Arrivals';
             } else if (cateNo === '42') {
                 title = 'Tops';
@@ -30,23 +28,36 @@
     </h2>
 </div>
 
-<!-- 메인 페이지와 동일한 상품 리스트 모듈 -->
-<div class="section maxwidth1680">
-    <div data-ez-holder="product_listmain">
-        <div module="product_listmain_1" class="ec-base-product">
-            <!--
-                $count = 20
-                $basket_result = /product/add_basket.html
-                $basket_option = /product/basket_option.html
-                $moreview = yes
-                $cache = yes
-            -->
-            <ul class="prdList grid4">
-                <!--@import(/product/list_product.html)-->
-            </ul>
-        </div>
-    </div>
-    <div module="product_listmore_1" class="more">
-        <a href="#none" onclick="{$more_action}" class="btnMore">MORE</a>
-    </div>
+<!-- 카테고리별 상품 리스트 모듈 -->
+<div class="section normalpackage_box maxwidth1680" data-ez-module="product-list/1" data-ez-layout="grid4">
+	<ez-prop data-version="1.0.0">
+		<ez-var data-prop="layout" data-namespace="ez.module.product-list.layout" data-type="array">
+			<ez-item data-id="grid3" data-name="일반3단형(PC 3열/MOBILE 1열)"></ez-item>
+			<ez-item data-id="grid4" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5" data-name="일반5단형(PC 5열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid3 list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 1열)"></ez-item>
+			<ez-item data-id="grid4 list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5 list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 2열)"></ez-item>
+		</ez-var>
+	</ez-prop>
+
+	<div data-ez-holder="product_listmain">
+		<div module="product_listmain_1" class="ec-base-product">
+			<!--
+				$count = 20
+				$basket_result = /product/add_basket.html
+				$basket_option = /product/basket_option.html
+				$moreview = yes
+				$cache = yes
+			-->
+			<ul class="prdList grid4" data-ez-role="layout">
+			<!--@import(/product/list_product.html)-->
+			</ul>
+		</div>
+		<div module="product_listmore_1" class="more">
+			<a href="#none" onclick="{$more_action}" class="btnMore">
+				MORE
+			</a>
+		</div>
+	</div>
 </div>
