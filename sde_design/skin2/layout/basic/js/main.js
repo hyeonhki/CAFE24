@@ -28,7 +28,7 @@
         const swiper = new Swiper(swiperContainer, {
             slidesPerView: 3,
             spaceBetween: 20,
-            loop: false,
+            loop: true,
             navigation: {
                 nextEl: '.swiper-button-next-special_slide',
                 prevEl: '.swiper-button-prev-special_slide',
@@ -36,18 +36,18 @@
             lazy: true,
             breakpoints: {
                 320: {
-                    slidesPerView: 1.2,
-                    spaceBetween: 16,
-                    slidesPerGroup: 1.1
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    slidesPerGroup: 1
                 },
                 768: {
-                    slidesPerView: 1.2,
-                    spaceBetween: 20,
-                    slidesPerGroup: 1.1
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    slidesPerGroup: 1
                 },
                 1024: {
                     slidesPerView: 3,
-                    spaceBetween: 20,
+                    spaceBetween: 16,
                     slidesPerGroup: 1
                 }
             }
