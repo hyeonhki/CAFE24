@@ -36,14 +36,14 @@
             lazy: true,
             breakpoints: {
                 320: {
-                    slidesPerView: 1,
+                    slidesPerView: 1.2,
                     spaceBetween: 16,
-                    slidesPerGroup: 1
+                    slidesPerGroup: 1.1
                 },
                 768: {
-                    slidesPerView: 1,
+                    slidesPerView: 1.2,
                     spaceBetween: 20,
-                    slidesPerGroup: 1
+                    slidesPerGroup: 1.1
                 },
                 1024: {
                     slidesPerView: 3,
