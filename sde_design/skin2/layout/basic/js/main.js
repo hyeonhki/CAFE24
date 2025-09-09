@@ -33,7 +33,12 @@
                 nextEl: '.swiper-button-next-special_slide',
                 prevEl: '.swiper-button-prev-special_slide',
             },
-            lazy: true,
+            lazy: {
+                loadPrevNext: true,
+                loadPrevNextAmount: 1
+            },
+            preloadImages: false,
+            watchSlidesProgress: true,
             breakpoints: {
                 320: {
                     slidesPerView: 1,
@@ -78,6 +83,7 @@
             section.style.opacity = '0';
             section.style.transform = 'translateY(20px)';
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            section.style.willChange = 'opacity, transform';
             observer.observe(section);
         });
     }
