@@ -40,8 +40,17 @@
         );
         
         // 모바일과 데스크톱 모두 동일한 스크롤 기반 로직
-        // 스크롤이 맨 아래에서 100px 이내에 도달했는지 확인
-        const isAtBottom = (scrollTop + windowHeight) >= (documentHeight - 100);
+        // 스크롤이 맨 아래에서 50px 이내에 도달했는지 확인 (더 민감하게)
+        const isAtBottom = (scrollTop + windowHeight) >= (documentHeight - 50);
+        
+        console.log('스크롤 체크:', {
+            scrollTop,
+            windowHeight,
+            documentHeight,
+            isAtBottom,
+            isFooterVisible,
+            hasFooterClass: document.body.classList.contains('footer-visible')
+        });
         
         if (isAtBottom && !isFooterVisible) {
             showFooter();
@@ -54,7 +63,18 @@
     function showFooter() {
         if (!footer) return;
         
+        console.log('showFooter 호출됨');
         isFooterVisible = true;
+        
+        // body에 footer-visible 클래스 추가하여 페이지 내용과 구매 버튼 위치 조정
+        document.body.classList.add('footer-visible');
+        
+        // 모바일에서 직접 스타일 적용하여 확실하게 처리
+        if (window.innerWidth <= 768) {
+            document.body.style.paddingBottom = '5vh';
+            console.log('모바일에서 padding-bottom: 5vh 직접 적용');
+        }
+        
         footer.style.display = 'block';
         
         // CSS transform과 transition을 사용한 부드러운 애니메이션
@@ -67,8 +87,19 @@
     function hideFooter() {
         if (!footer) return;
         
+        console.log('hideFooter 호출됨');
         isFooterVisible = false;
+        
         footer.classList.remove('show');
+        
+        // body에서 footer-visible 클래스 제거하여 페이지 내용과 구매 버튼 원위치
+        document.body.classList.remove('footer-visible');
+        
+        // 모바일에서 직접 스타일 제거하여 확실하게 처리
+        if (window.innerWidth <= 768) {
+            document.body.style.paddingBottom = '0';
+            console.log('모바일에서 padding-bottom: 0 직접 적용');
+        }
         
         // 애니메이션 완료 후 display none
         setTimeout(() => {

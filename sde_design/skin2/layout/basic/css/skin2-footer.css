@@ -105,10 +105,39 @@ body:not(.mobile-device) {
     }
 }
 
+/* 고정 구매 버튼 기본 스타일 */
+#orderFixArea {
+    transition: bottom 0.3s ease;
+    z-index: 1900; /* Footer보다 낮게 설정 */
+}
+
+/* Footer가 표시될 때 구매 버튼을 위로 밀어올림 */
+body.footer-visible #orderFixArea {
+    bottom: 5vh !important; /* Footer 높이만큼 위로 이동 */
+}
+
 /* 반응형: 모바일 */
 @media screen and (max-width: 768px) {
     body {
-        padding-bottom: 5vh; /* footer가 나타날 때를 대비한 여백 - 줄어든 높이에 맞춤 */
+        padding-bottom: 0 !important; /* 기본 여백 제거 - 강제 적용 */
+        transition: padding-bottom 0.3s ease !important; /* 부드러운 애니메이션 */
+    }
+    
+    /* Footer가 보일 때 페이지 전체 내용을 위로 밀어올림 */
+    body.footer-visible {
+        padding-bottom: 5vh !important; /* Footer + 구매버튼 높이 + 여유공간 - 강제 적용 */
+    }
+    
+    /* 모바일에서 구매 버튼 기본 위치 */
+    #orderFixArea {
+        bottom: 0;
+        position: fixed !important;
+        z-index: 1900; /* Footer보다 낮게 */
+    }
+    
+    /* Footer가 보일 때 구매 버튼 위치 조정 */
+    body.footer-visible #orderFixArea {
+        bottom: 5vh !important; /* Footer 높이만큼 위로 */
     }
     
     .footer-content {

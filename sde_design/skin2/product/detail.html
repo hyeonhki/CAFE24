@@ -660,43 +660,15 @@
 		</div><!-- //product_relation -->
 	</div><!-- //prdDetail -->
 
-	<div id="pay_Info" class="info_fold">
-		<div class="info_title">상품결제정보<i aria-hidden="true" class="icon icoPlus">+</i></div>
-		<div class="info_content">
-			{$payment_info}
-		</div>
-	</div>
 
-	<div id="delivery_Info" class="info_fold">
-		<div class="info_title">배송정보<i aria-hidden="true" class="icon icoPlus">+</i></div>
+    <div id="review" class="info_fold">
+		<div class="info_title">Review ({$review_count})<i aria-hidden="true" class="icon icoPlus">+</i></div>
 		<div class="info_content">
-			<ul class="info delivery">
-				<li>배송 방법 : {$shipping_method}</li>
-				<li>배송 지역 : {$shipping_area}</li>
-				<li>배송 비용 : {$shipping_fee}</li>
-				<li>배송 기간 : {$shipping_period}</li>
-				<li>배송 안내 : {$shipping_info}</li>
-			</ul>
-		</div>
-	</div>
-
-	<div id="exchange_Info" class="info_fold">
-		<div class="info_title">교환 및 반품정보<i aria-hidden="true" class="icon icoPlus">+</i></div>
-		<div class="info_content">
-			{$exchange_info}
-		</div>
-	</div>
-
-	<div id="service_Info" class="info_fold">
-		<div class="info_title">서비스문의<i aria-hidden="true" class="icon icoPlus">+</i></div>
-		<div class="info_content">
-			{$service_info}
-		</div>
-	</div>
-
-	<div id="review" class="info_fold">
-		<div class="info_title">상품리뷰<i aria-hidden="true" class="icon icoPlus">+</i></div>
-		<div class="info_content">
+			<div class="review_notice" style="padding: 15px; background-color: #f8f9fa; border: 1px solid #e9ecef; margin-bottom: 20px; border-radius: 5px;">
+				<p style="margin: 0; color: #495057; font-size: 14px;">
+					텍스트 리뷰 작성시 500원, 상품 착용 사진 리뷰는 <strong>1000원</strong>의 적립금을 드립니다.
+				</p>
+			</div>
 			<div module="product_review">
 				<!--@js(/js/module/product/review.js)-->
 				<a name="use_review"></a>
@@ -767,8 +739,21 @@
 		</div>
 	</div>
 
-	<div id="QnA" class="info_fold">
-		<div class="info_title">상품문의<i aria-hidden="true" class="icon icoPlus">+</i></div>
+    <div id="delivery_Info" class="info_fold">
+		<div class="info_title">배송정보<i aria-hidden="true" class="icon icoPlus">+</i></div>
+		<div class="info_content">
+			<ul class="info delivery">
+				<li>배송 방법 : {$shipping_method}</li>
+				<li>배송 지역 : {$shipping_area}</li>
+				<li>배송 비용 : {$shipping_fee}</li>
+				<li>배송 기간 : {$shipping_period}</li>
+				<li>배송 안내 : {$shipping_info}</li>
+			</ul>
+		</div>
+	</div>
+
+    <div id="QnA" class="info_fold">
+		<div class="info_title">Q&A<i aria-hidden="true" class="icon icoPlus">+</i></div>
 		<div class="info_content">
 			<div module="product_qna">
 				<!--@js(/js/module/product/qna.js)-->
@@ -837,6 +822,20 @@
 				<a href="{$param_next}">다음 페이지</a>
 				<a href="{$param_last}" class="last">마지막 페이지</a>
 			</div>
+		</div>
+	</div>
+
+    <div id="exchange_Info" class="info_fold">
+		<div class="info_title">교환/반품 안내<i aria-hidden="true" class="icon icoPlus">+</i></div>
+		<div class="info_content">
+			{$exchange_info}
+		</div>
+	</div>
+
+	<div id="pay_Info" class="info_fold">
+		<div class="info_title">상품결제정보<i aria-hidden="true" class="icon icoPlus">+</i></div>
+		<div class="info_content">
+			{$payment_info}
 		</div>
 	</div>
 </div>
