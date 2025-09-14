@@ -28,36 +28,31 @@
     </h2>
 </div>
 
-<!-- 카테고리별 상품 리스트 모듈 -->
-<div class="section normalpackage_box maxwidth1680" data-ez-module="product-list/1" data-ez-layout="grid4">
-	<ez-prop data-version="1.0.0">
-		<ez-var data-prop="layout" data-namespace="ez.module.product-list.layout" data-type="array">
-			<ez-item data-id="grid3" data-name="일반3단형(PC 3열/MOBILE 1열)"></ez-item>
-			<ez-item data-id="grid4" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
-			<ez-item data-id="grid5" data-name="일반5단형(PC 5열/MOBILE 2열)"></ez-item>
-			<ez-item data-id="grid3 list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 1열)"></ez-item>
-			<ez-item data-id="grid4 list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
-			<ez-item data-id="grid5 list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 2열)"></ez-item>
-		</ez-var>
-	</ez-prop>
-
-	<div data-ez-holder="product_listmain">
-		<div module="product_listmain_1" class="ec-base-product">
-			<!--
-				$count = 20
-				$basket_result = /product/add_basket.html
-				$basket_option = /product/basket_option.html
-				$moreview = yes
-				$cache = yes
-			-->
-			<ul class="prdList grid4" data-ez-role="layout">
-			<!--@import(/product/list_product.html)-->
-			</ul>
-		</div>
-		<div module="product_listmore_1" class="more">
-			<a href="#none" onclick="{$more_action}" class="btnMore">
-				MORE
-			</a>
+<!-- 카테고리별 상품 목록 -->
+<div class="normalpackage_box section" data-ez-module="product-normalpackage/1" data-ez-layout="grid4">
+	<div module="product_normalpackage_1" class="product_scrollx">
+		<div data-ez-holder="product_list">
+			<div module="product_listnormal_1" class="ec-base-product">
+				<!--
+					$count = 20
+					$moreview = no
+					$cache = yes
+					$basket_result = /product/add_basket.html
+					$basket_option = /product/basket_option.html
+				-->
+				<ul class="prdList grid4" data-ez-role="layout ez-discount-tag">
+					<!--@import(/product/list_product.html)-->
+				</ul>
+			</div>
+			<div module="product_normalpaging_1" class="ec-base-paginate typeList">
+				<a href="{$param_first}" class="first">첫 페이지</a>
+				<a href="{$param_before}">이전 페이지</a>
+				<ol>
+					<li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+				</ol>
+				<a href="{$param_next}">다음 페이지</a>
+				<a href="{$param_last}" class="last">마지막 페이지</a>
+			</div>
 		</div>
 	</div>
 </div>
