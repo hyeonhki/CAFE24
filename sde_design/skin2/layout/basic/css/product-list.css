@@ -63,4 +63,51 @@
     .section {
         margin-bottom: 40px;
     }
+    
+    /* 카테고리 페이지 상품 목록 모바일 최적화 */
+    .normalpackage_box {
+        padding: 0 20px;
+        margin-bottom: 60px;
+    }
+    
+    .normalpackage_box .prdList {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 20px !important;
+    }
+    
+    .normalpackage_box .prdList li {
+        flex: 0 0 calc(50% - 10px) !important;
+        width: calc(50% - 10px) !important;
+        max-width: calc(50% - 10px) !important;
+        margin: 0 !important;
+    }
+    
+    .normalpackage_box .prdList li .thumbnail img,
+    .normalpackage_box .prdList li .thumbnail picture img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 860/1100 !important;
+        object-fit: cover !important;
+    }
+    
+    .normalpackage_box .prdList li .description {
+        padding: 5px 0 !important;
+        text-align: left !important;
+    }
+    
+    .normalpackage_box .prdList li .description .name {
+        font-size: 18px !important;
+        font-weight: 400 !important;
+        margin-bottom: 12px !important;
+        line-height: 1.4 !important;
+    }
+    
+    .normalpackage_box .prdList li .description .price {
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        color: #333 !important;
+    }
 }
